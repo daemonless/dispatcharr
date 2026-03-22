@@ -1,0 +1,138 @@
+ARG BASE_VERSION=15
+
+# ── Stage 1: Frontend ──────────────────────────────────────────────────────────
+FROM ghcr.io/daemonless/base:${BASE_VERSION} AS frontend-builder
+
+ARG NODE_VERSION=22
+
+RUN pkg update && \
+    pkg install -y node${NODE_VERSION} npm-node${NODE_VERSION} git && \
+    pkg clean -ay && rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
+
+RUN git clone --depth 1 https://github.com/Dispatcharr/Dispatcharr /app
+
+WORKDIR /app/frontend
+
+# @vitejs/plugin-react-swc has no FreeBSD native binding for @swc/core.
+# Replace with @vitejs/plugin-react (Babel-based, pure JS) and patch vite.config.js.
+RUN node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("package.json","utf8"));delete p.devDependencies["@vitejs/plugin-react-swc"];delete p.devDependencies["@swc/core"];delete p.devDependencies["@swc/wasm"];p.devDependencies["@vitejs/plugin-react"]="^4.1.0";fs.writeFileSync("package.json",JSON.stringify(p,null,2));console.log("Patched package.json: swc -> babel react plugin");' && \
+    sed -i '' 's|@vitejs/plugin-react-swc|@vitejs/plugin-react|g' vite.config.js && \
+    echo "Patched vite.config.js"
+
+RUN npm install --no-audit --progress=false && \
+    npm run build && \
+    rm -rf node_modules .cache
+
+# ── Stage 2: comskip ───────────────────────────────────────────────────────────
+# TODO: argtable2 is not in FreeBSD pkg; comskip must be built from source once
+# argtable2 is either available or built from source (devel/argtable2 in ports).
+# Comskip is optional — commercial detection. Skipped for initial build.
+
+# ── Stage 3: Python app ────────────────────────────────────────────────────────
+FROM ghcr.io/daemonless/base:${BASE_VERSION} AS app-builder
+
+RUN pkg update && \
+    pkg install -y \
+        python313 \
+        FreeBSD-clang FreeBSD-clang-dev FreeBSD-toolchain \
+        FreeBSD-clibs-dev FreeBSD-runtime-dev \
+        FreeBSD-libexecinfo-dev FreeBSD-utilities-dev \
+        FreeBSD-audit-dev \
+        FreeBSD-zlib-dev \
+        FreeBSD-openssl-dev \
+        postgresql17-client \
+        libjpeg-turbo openjpeg libxml2 libxslt \
+        libev \
+        rust \
+        git && \
+    pkg clean -ay && rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
+
+# Clone source (Python side; no node needed here)
+RUN git clone --depth 1 https://github.com/Dispatcharr/Dispatcharr /app
+
+# Replace frontend source with the pre-built dist from stage 1
+RUN rm -rf /app/frontend
+COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
+
+# Patch pyproject.toml before install:
+#   torch/sentence-transformers: ML channel matching — no FreeBSD wheels for py3.13
+#   python-vlc: stream preview — heavy libvlc dependency, skipped for now
+#   psycopg2-binary: Linux-only; replaced with psycopg2 (builds against pg headers)
+RUN sed -i '' \
+        -e '/^    "torch/d' \
+        -e '/^    "sentence-transformers/d' \
+        -e '/^    "python-vlc/d' \
+        -e 's/psycopg2-binary/psycopg2/' \
+        /app/pyproject.toml && \
+    python3.13 -m venv --system-site-packages /dispatcharrpy && \
+    /dispatcharrpy/bin/pip install --no-cache-dir --upgrade pip && \
+    # Pin jsonschema<4.18 to avoid rpds-py (Rust extension, no FreeBSD wheels)
+    /dispatcharrpy/bin/pip install --no-cache-dir "jsonschema<4.18.0" && \
+    LIBEV_EMBED=False CFLAGS="-I/usr/local/include" LDFLAGS="-L/usr/local/lib" /dispatcharrpy/bin/pip install --no-cache-dir -e /app && \
+    /dispatcharrpy/bin/pip cache purge
+
+# ── Stage 4: Production ───────────────────────────────────────────────────────
+FROM ghcr.io/daemonless/base:${BASE_VERSION}
+
+ARG FREEBSD_ARCH=amd64
+ARG PACKAGES="python313 postgresql17-server postgresql17-client redis nginx ffmpeg doas libjpeg-turbo openjpeg libxml2 libxslt"
+
+LABEL org.opencontainers.image.title="Dispatcharr" \
+      org.opencontainers.image.description="Dispatcharr on FreeBSD." \
+      org.opencontainers.image.source="https://github.com/daemonless/dispatcharr" \
+      org.opencontainers.image.url="https://dispatcharr.io/" \
+      org.opencontainers.image.licenses="AGPL-3.0-only" \
+      org.opencontainers.image.vendor="daemonless" \
+      org.opencontainers.image.authors="daemonless" \
+      io.daemonless.category="Media Management" \
+      io.daemonless.port="9191" \
+      io.daemonless.arch="${FREEBSD_ARCH}" \
+      io.daemonless.packages="${PACKAGES}" \
+      io.daemonless.wip="true"
+
+RUN pkg update && \
+    pkg install -y ${PACKAGES} && \
+    pkg clean -ay && \
+    rm -rf /var/cache/pkg/* /var/db/pkg/repos/* && \
+    ln -sf /usr/local/bin/python3.13 /usr/local/bin/python3 && \
+    ln -sf /usr/local/bin/python3.13 /usr/local/bin/python && \
+    chmod 4755 /usr/local/bin/doas && \
+    echo "permit nopass keepenv bsd" > /usr/local/etc/doas.conf && \
+    chmod 0400 /usr/local/etc/doas.conf
+
+# Copy app, venv, comskip from builders
+COPY --from=app-builder /app /app
+COPY --from=app-builder /dispatcharrpy /dispatcharrpy
+# TODO: COPY --from=comskip-builder /tmp/comskip/comskip /usr/local/bin/comskip
+
+# Copy root filesystem (service scripts, nginx config)
+COPY root/ /
+
+RUN chmod +x \
+        /etc/services.d/postgres/run \
+        /etc/services.d/redis/run \
+        /etc/services.d/nginx/run \
+        /etc/services.d/uwsgi/run \
+        /healthz && \
+    # /app and venv must be bsd-writable/executable at runtime
+    chown -R bsd:bsd /app /dispatcharrpy
+
+# Put venv binaries (uwsgi, celery, daphne, python) on PATH
+ENV PATH="/dispatcharrpy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV DISPATCHARR_ENV="aio"
+ENV DISPATCHARR_PORT="9191"
+ENV DJANGO_SETTINGS_MODULE="dispatcharr.settings"
+ENV POSTGRES_HOST="127.0.0.1"
+ENV POSTGRES_PORT="5432"
+ENV POSTGRES_DB="dispatcharr"
+ENV POSTGRES_USER="dispatcharr"
+ENV POSTGRES_PASSWORD="dispatcharr"
+ENV REDIS_HOST="127.0.0.1"
+ENV REDIS_PORT="6379"
+ENV CELERY_NICE_LEVEL="5"
+ENV PGDATA="/data/postgres"
+ENV DISABLE_ML_DOWNLOADS="true"
+
+EXPOSE 9191
+
+VOLUME /data

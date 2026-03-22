@@ -1,0 +1,13 @@
+# dbuild configuration file
+
+build:
+  variants:
+    - tag: latest
+      containerfile: Containerfile
+      default: true
+
+cit:
+  mode: health
+  port: 9191
+  health: /
+  wait: 180

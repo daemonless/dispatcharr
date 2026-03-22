@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mkdir -p /data/redis
+chown bsd:bsd /data/redis
+
+exec s6-setuidgid bsd /usr/local/bin/redis-server --dir /data/redis

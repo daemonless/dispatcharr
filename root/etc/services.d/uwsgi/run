@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Ensure persistent data subdirs exist
+mkdir -p /data/postgres /data/redis /data/logo_cache /data/logs /data/backups /data/logos /data/epg /data/streams /data/epgs /data/m3us
+chown -R bsd:bsd /data/redis /data/logo_cache /data/logs /data/backups /data/logos /data/epg /data/streams /data/epgs /data/m3us
+
+# Generate or load SECRET_KEY (persisted across restarts)
+KEYFILE=/data/secret_key
+if [ ! -f "$KEYFILE" ]; then
+    /dispatcharrpy/bin/python -c "import secrets; print(secrets.token_hex(50))" > "$KEYFILE"
+    chmod 600 "$KEYFILE"
+    chown bsd:bsd "$KEYFILE"
+fi
+export DJANGO_SECRET_KEY=$(cat "$KEYFILE")
+
+# Wait for PostgreSQL to be ready
+echo "[uwsgi] Waiting for PostgreSQL..."
+until /usr/local/bin/pg_isready -h 127.0.0.1 -p 5432 -q; do
+    sleep 2
+done
+echo "[uwsgi] PostgreSQL is ready."
+
+# Run Django setup (idempotent on every start)
+s6-setuidgid bsd /dispatcharrpy/bin/python /app/manage.py migrate --noinput
+s6-setuidgid bsd /dispatcharrpy/bin/python /app/manage.py collectstatic --noinput -v 0
+
+exec s6-setuidgid bsd /dispatcharrpy/bin/uwsgi --ini /app/docker/uwsgi.ini

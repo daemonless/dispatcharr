@@ -1,0 +1,26 @@
+#!/bin/sh
+PGDATA="${PGDATA:-/data/postgres}"
+
+# First-run initialization
+if [ ! -f "${PGDATA}/PG_VERSION" ]; then
+    echo "[postgres] Initializing cluster at ${PGDATA}..."
+    mkdir -p "${PGDATA}"
+    chown postgres:postgres "${PGDATA}"
+    chmod 700 "${PGDATA}"
+
+    s6-setuidgid postgres initdb -D "${PGDATA}" --auth=trust --encoding=UTF8
+
+    # Temporarily start postgres to create the app user and database
+    s6-setuidgid postgres pg_ctl start -D "${PGDATA}" -w -o "-k /tmp" -l /tmp/pg_init.log
+
+    s6-setuidgid postgres psql -h /tmp -d postgres -c \
+        "CREATE USER \"${POSTGRES_USER:-dispatcharr}\" WITH PASSWORD '${POSTGRES_PASSWORD:-dispatcharr}' CREATEDB;" || true
+
+    s6-setuidgid postgres psql -h /tmp -d postgres -c \
+        "CREATE DATABASE \"${POSTGRES_DB:-dispatcharr}\" OWNER \"${POSTGRES_USER:-dispatcharr}\";" || true
+
+    s6-setuidgid postgres pg_ctl stop -D "${PGDATA}" -m fast
+    echo "[postgres] Cluster initialized."
+fi
+
+exec s6-setuidgid postgres /usr/local/bin/postgres -D "${PGDATA}" -k /tmp

@@ -1,0 +1,77 @@
+name: dispatcharr
+
+x-daemonless:
+  title: "Dispatcharr"
+  icon: ":material-television-play:"
+  category: "Media Management"
+  description: "Dispatcharr — stream dispatching and channel management."
+  upstream_url: "https://github.com/Dispatcharr/Dispatcharr"
+  web_url: "https://dispatcharr.io/"
+  freshports_url: ""
+  user: "bsd"
+  upstream_binary: false
+  mlock: false
+  community: "Discord:https://discord.gg/dispatcharr"
+
+  appjail:
+
+  notes: |
+    > **Work in Progress**: This is an all-in-one (AIO) image — PostgreSQL, Redis,
+    > Nginx, Celery, Daphne, and the Django app all run inside a single container.
+
+    **First run**: the container initialises a fresh PostgreSQL cluster under `/data/postgres`
+    and runs Django migrations automatically. This takes a few extra seconds on first start.
+
+    **PostgreSQL requires `allow.sysvipc`** in the jail. Add the annotation to your podman run
+    command or compose deploy block:
+    ```sh
+    podman run --annotation 'org.freebsd.jail.allow.sysvipc=true' ...
+    ```
+
+    **`DJANGO_SECRET_KEY`**: if not provided, a random key is auto-generated on first start
+    and persisted to `/data/secret_key`. Set it explicitly if you need a stable key across
+    container recreations.
+
+    **AI channel matching** (torch / sentence-transformers) is not available in this build —
+    PyTorch exists in FreeBSD ports but Python 3.13 support is not yet available
+    ([FreeBSD bug #285957](https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=285957), expected ~2027).
+    The rest of Dispatcharr is fully functional.
+
+  docs:
+    env:
+      DISPATCHARR_PORT: "Web UI port (default: 9191)"
+      POSTGRES_DB: "PostgreSQL database name (default: dispatcharr)"
+      POSTGRES_USER: "PostgreSQL username (default: dispatcharr)"
+      POSTGRES_PASSWORD: "PostgreSQL password (default: dispatcharr)"
+      DJANGO_SECRET_KEY: "Django secret key — auto-generated if not set, persisted to /data/secret_key"
+      REDIS_HOST: "Redis hostname (default: 127.0.0.1)"
+      REDIS_PORT: "Redis port (default: 6379)"
+      CELERY_NICE_LEVEL: "niceness for Celery workers (default: 5)"
+      DISABLE_ML_DOWNLOADS: "Set false to enable ML channel matching (requires torch — not available in this build)"
+      TZ: "Timezone (e.g. America/New_York)"
+    volumes:
+      /data: "Persistent data — PostgreSQL cluster, media, backups, logos"
+    ports:
+      9191: "Web UI"
+
+services:
+  dispatcharr:
+    image: ghcr.io/daemonless/dispatcharr:latest
+    container_name: dispatcharr
+    restart: unless-stopped
+
+    annotations:
+      org.freebsd.jail.allow.sysvipc: "true"
+
+    environment:
+      - TZ=UTC
+      - POSTGRES_DB=dispatcharr
+      - POSTGRES_USER=dispatcharr
+      - POSTGRES_PASSWORD=dispatcharr
+      - CELERY_NICE_LEVEL=5
+
+    volumes:
+      - /containers/dispatcharr:/data
+
+    ports:
+      - 9191:9191
