@@ -1,12 +1,12 @@
 {
   "image": "dispatcharr",
-  "generated": "2026-03-22T18:08:50Z",
+  "generated": "2026-03-28T17:53:21Z",
   "tags": {
     "latest": {
       "arch": "amd64",
       "app_version": "15.0",
       "source": "upstream",
-      "generated": "2026-03-22T18:08:35Z",
+      "generated": "2026-03-28T17:53:05Z",
       "packages": {
         "freebsd": [
           {
@@ -743,7 +743,7 @@
           },
           {
             "name": "celery",
-            "version": "5.6.2"
+            "version": "5.6.3"
           },
           {
             "name": "certifi",
@@ -791,7 +791,7 @@
           },
           {
             "name": "cryptography",
-            "version": "46.0.5"
+            "version": "46.0.6"
           },
           {
             "name": "daphne",
@@ -967,7 +967,7 @@
           },
           {
             "name": "requests",
-            "version": "2.32.5"
+            "version": "2.33.0"
           },
           {
             "name": "service-identity",
