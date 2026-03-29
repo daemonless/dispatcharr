@@ -13,7 +13,7 @@ x-daemonless:
   mlock: false
   community: "Discord:https://discord.gg/dispatcharr"
 
-  appjail:
+  appjail: true
 
   notes: |
     > **Work in Progress**: This is an all-in-one (AIO) image — PostgreSQL, Redis,
