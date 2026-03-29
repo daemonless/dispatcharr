@@ -1,12 +1,12 @@
 {
   "image": "dispatcharr",
-  "generated": "2026-03-28T17:53:21Z",
+  "generated": "2026-03-29T21:06:28Z",
   "tags": {
     "latest": {
       "arch": "amd64",
       "app_version": "15.0",
       "source": "upstream",
-      "generated": "2026-03-28T17:53:05Z",
+      "generated": "2026-03-29T21:06:11Z",
       "packages": {
         "freebsd": [
           {
@@ -963,7 +963,7 @@
           },
           {
             "name": "regex",
-            "version": "2026.2.28"
+            "version": "2026.3.32"
           },
           {
             "name": "requests",
