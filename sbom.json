@@ -1,12 +1,12 @@
 {
   "image": "dispatcharr",
-  "generated": "2026-04-02T15:09:06Z",
+  "generated": "2026-04-02T16:04:10Z",
   "tags": {
     "latest": {
       "arch": "amd64",
       "app_version": "15.0",
       "source": "upstream",
-      "generated": "2026-04-02T15:07:49Z",
+      "generated": "2026-04-02T16:02:45Z",
       "packages": {
         "freebsd": [
           {
