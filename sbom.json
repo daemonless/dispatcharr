@@ -1,12 +1,12 @@
 {
   "image": "dispatcharr",
-  "generated": "2026-03-29T21:06:28Z",
+  "generated": "2026-04-02T15:09:06Z",
   "tags": {
     "latest": {
       "arch": "amd64",
       "app_version": "15.0",
       "source": "upstream",
-      "generated": "2026-03-29T21:06:11Z",
+      "generated": "2026-04-02T15:07:49Z",
       "packages": {
         "freebsd": [
           {
@@ -531,7 +531,7 @@
           },
           {
             "name": "perl5",
-            "version": "5.42.0_1"
+            "version": "5.42.2"
           },
           {
             "name": "pixman",
@@ -763,7 +763,7 @@
           },
           {
             "name": "charset-normalizer",
-            "version": "3.4.6"
+            "version": "3.4.7"
           },
           {
             "name": "click",
@@ -799,7 +799,7 @@
           },
           {
             "name": "dispatcharr",
-            "version": "0.21.1"
+            "version": "0.22.0"
           },
           {
             "name": "django-celery-beat",
@@ -895,7 +895,7 @@
           },
           {
             "name": "pillow",
-            "version": "12.1.1"
+            "version": "12.2.0"
           },
           {
             "name": "pip",
