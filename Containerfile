@@ -5,6 +5,8 @@
 # --------------------------------------------------------------------------
 
 ARG BASE_VERSION=15
+ARG UPSTREAM_URL="https://api.github.com/repos/Dispatcharr/Dispatcharr/releases/latest"
+ARG UPSTREAM_JQ=".tag_name"
 
 # ── Stage 1: Frontend ──────────────────────────────────────────────────────────
 FROM ghcr.io/daemonless/base:${BASE_VERSION} AS frontend-builder
@@ -93,6 +95,8 @@ LABEL org.opencontainers.image.title="Dispatcharr" \
       io.daemonless.category="Media Management" \
       io.daemonless.port="9191" \
       io.daemonless.arch="${FREEBSD_ARCH}" \
+      io.daemonless.upstream-url="${UPSTREAM_URL}" \
+      io.daemonless.upstream-jq="${UPSTREAM_JQ}" \
       io.daemonless.packages="${PACKAGES}" \
       io.daemonless.wip="true"
 
