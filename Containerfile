@@ -17,7 +17,9 @@ RUN pkg update && \
     pkg install -y node${NODE_VERSION} npm-node${NODE_VERSION} git && \
     pkg clean -ay && rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
 
-RUN git clone --depth 1 https://github.com/Dispatcharr/Dispatcharr /app
+RUN DISPATCHARR_TAG=$(git ls-remote --tags --sort="v:refname" https://github.com/Dispatcharr/Dispatcharr.git | grep -v "{}" | tail -n1 | sed 's/.*\///') && \
+    echo "Building tag: ${DISPATCHARR_TAG}" && \
+    git clone --depth 1 -b "${DISPATCHARR_TAG}" https://github.com/Dispatcharr/Dispatcharr /app
 
 WORKDIR /app/frontend
 
@@ -56,7 +58,10 @@ RUN pkg update && \
     pkg clean -ay && rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
 
 # Clone source (Python side; no node needed here)
-RUN git clone --depth 1 https://github.com/Dispatcharr/Dispatcharr /app
+RUN DISPATCHARR_TAG=$(git ls-remote --tags --sort="v:refname" https://github.com/Dispatcharr/Dispatcharr.git | grep -v "{}" | tail -n1 | sed 's/.*\///') && \
+    echo "Building tag: ${DISPATCHARR_TAG}" && \
+    git clone --depth 1 -b "${DISPATCHARR_TAG}" https://github.com/Dispatcharr/Dispatcharr /app && \
+    echo "${DISPATCHARR_TAG}" > /app/version
 
 # Replace frontend source with the pre-built dist from stage 1
 RUN rm -rf /app/frontend

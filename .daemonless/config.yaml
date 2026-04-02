@@ -7,7 +7,7 @@ build:
       default: true
 
 cit:
-  mode: health
+  mode: screenshot
   port: 9191
   health: /
   wait: 180
