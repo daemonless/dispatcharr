@@ -1,13 +1,13 @@
 {
+  "generated": "2026-04-05T19:55:50Z",
   "image": "dispatcharr",
-  "generated": "2026-04-02T17:31:17Z",
   "tags": {
     "latest": {
+      "app_version": "v0.22.1",
       "arch": "amd64",
-      "app_version": "v0.22.0",
-      "source": "upstream",
-      "generated": "2026-04-02T17:30:01Z",
+      "generated": "2026-04-05T19:54:31Z",
       "packages": {
+        "dotnet": [],
         "freebsd": [
           {
             "name": "FreeBSD-audit-lib",
@@ -586,10 +586,6 @@
             "version": "2.13.2.0"
           },
           {
-            "name": "s6-rc",
-            "version": "0.5.6.0"
-          },
-          {
             "name": "shaderc",
             "version": "2025.5_1"
           },
@@ -674,7 +670,6 @@
             "version": "1.5.7_1"
           }
         ],
-        "dotnet": [],
         "go": [],
         "java": [],
         "node": [
@@ -767,7 +762,7 @@
           },
           {
             "name": "click",
-            "version": "8.3.1"
+            "version": "8.3.2"
           },
           {
             "name": "click-didyoumean",
@@ -799,7 +794,7 @@
           },
           {
             "name": "dispatcharr",
-            "version": "0.22.0"
+            "version": "0.22.1"
           },
           {
             "name": "django-celery-beat",
@@ -963,7 +958,7 @@
           },
           {
             "name": "regex",
-            "version": "2026.3.32"
+            "version": "2026.4.4"
           },
           {
             "name": "requests",
@@ -1011,7 +1006,7 @@
           },
           {
             "name": "tzdata",
-            "version": "2025.3"
+            "version": "2026.1"
           },
           {
             "name": "tzlocal",
@@ -1065,9 +1060,10 @@
         "ruby": [],
         "rust": []
       },
+      "source": "upstream",
       "summary": {
-        "freebsd": 166,
         "dotnet": 0,
+        "freebsd": 165,
         "go": 0,
         "java": 0,
         "node": 1,
@@ -1075,7 +1071,7 @@
         "python": 94,
         "ruby": 0,
         "rust": 0,
-        "total": 261
+        "total": 260
       }
     }
   }
