@@ -1,11 +1,11 @@
 {
-  "generated": "2026-04-05T19:55:50Z",
+  "generated": "2026-04-17T10:21:51Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.22.1",
+      "app_version": "v0.23.0",
       "arch": "amd64",
-      "generated": "2026-04-05T19:54:31Z",
+      "generated": "2026-04-17T10:20:28Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -139,7 +139,7 @@
           },
           {
             "name": "aom",
-            "version": "3.13.2"
+            "version": "3.13.3"
           },
           {
             "name": "bash",
@@ -167,23 +167,23 @@
           },
           {
             "name": "dav1d",
-            "version": "1.5.3"
+            "version": "1.5.3_1"
           },
           {
             "name": "doas",
-            "version": "6.3p13"
+            "version": "6.4"
           },
           {
             "name": "execline",
-            "version": "2.9.7.0"
+            "version": "2.9.8.1"
           },
           {
             "name": "expat",
-            "version": "2.7.4"
+            "version": "2.7.5"
           },
           {
             "name": "ffmpeg",
-            "version": "8.0.1_1,1"
+            "version": "8.1,1"
           },
           {
             "name": "fontconfig",
@@ -191,7 +191,7 @@
           },
           {
             "name": "freetype2",
-            "version": "2.14.1"
+            "version": "2.14.3"
           },
           {
             "name": "fribidi",
@@ -207,7 +207,7 @@
           },
           {
             "name": "gettext-runtime",
-            "version": "0.26"
+            "version": "1.0"
           },
           {
             "name": "giflib",
@@ -231,7 +231,7 @@
           },
           {
             "name": "harfbuzz",
-            "version": "12.3.0"
+            "version": "13.2.1"
           },
           {
             "name": "highway",
@@ -239,7 +239,7 @@
           },
           {
             "name": "hwdata",
-            "version": "0.403,1"
+            "version": "0.405,1"
           },
           {
             "name": "icu",
@@ -255,7 +255,7 @@
           },
           {
             "name": "jpeg-turbo",
-            "version": "3.1.3"
+            "version": "3.1.4.1"
           },
           {
             "name": "jq",
@@ -267,7 +267,7 @@
           },
           {
             "name": "lcms2",
-            "version": "2.17"
+            "version": "2.18"
           },
           {
             "name": "lerc",
@@ -275,7 +275,7 @@
           },
           {
             "name": "libX11",
-            "version": "1.8.12,1"
+            "version": "1.8.13,1"
           },
           {
             "name": "libXau",
@@ -315,7 +315,7 @@
           },
           {
             "name": "libbluray",
-            "version": "1.4.0,1"
+            "version": "1.4.1,1"
           },
           {
             "name": "libdatrie",
@@ -351,7 +351,7 @@
           },
           {
             "name": "libgcrypt",
-            "version": "1.11.2"
+            "version": "1.12.0_1"
           },
           {
             "name": "libglvnd",
@@ -359,7 +359,7 @@
           },
           {
             "name": "libgpg-error",
-            "version": "1.58"
+            "version": "1.59"
           },
           {
             "name": "libiconv",
@@ -371,7 +371,7 @@
           },
           {
             "name": "libjpeg-turbo",
-            "version": "3.1.3"
+            "version": "3.1.4.1"
           },
           {
             "name": "libjxl",
@@ -391,11 +391,11 @@
           },
           {
             "name": "libplacebo",
-            "version": "7.351.0_1"
+            "version": "7.360.1"
           },
           {
             "name": "librsvg2-rust",
-            "version": "2.61.3"
+            "version": "2.62.0_1"
           },
           {
             "name": "libtasn1",
@@ -419,7 +419,7 @@
           },
           {
             "name": "libunistring",
-            "version": "1.4.1"
+            "version": "1.4.2"
           },
           {
             "name": "libunwind",
@@ -443,7 +443,7 @@
           },
           {
             "name": "libvpx",
-            "version": "1.15.2"
+            "version": "1.16.0"
           },
           {
             "name": "libx264",
@@ -475,7 +475,7 @@
           },
           {
             "name": "mpc",
-            "version": "1.3.1_1"
+            "version": "1.4.0"
           },
           {
             "name": "mpdecimal",
@@ -491,7 +491,7 @@
           },
           {
             "name": "nginx",
-            "version": "1.28.0_10,3"
+            "version": "1.28.3,3"
           },
           {
             "name": "oniguruma",
@@ -503,19 +503,19 @@
           },
           {
             "name": "openexr",
-            "version": "3.4.5"
+            "version": "3.4.9"
           },
           {
             "name": "openjpeg",
-            "version": "2.5.4_1"
+            "version": "2.5.4_2"
           },
           {
             "name": "openjph",
-            "version": "0.25.3"
+            "version": "0.26.3"
           },
           {
             "name": "opus",
-            "version": "1.6"
+            "version": "1.6.1"
           },
           {
             "name": "p11-kit",
@@ -523,7 +523,7 @@
           },
           {
             "name": "pango",
-            "version": "1.56.4"
+            "version": "1.56.4_1"
           },
           {
             "name": "pcre2",
@@ -539,11 +539,11 @@
           },
           {
             "name": "pkg",
-            "version": "2.5.1"
+            "version": "2.6.2_1"
           },
           {
             "name": "png",
-            "version": "1.6.53"
+            "version": "1.6.57"
           },
           {
             "name": "postgresql17-client",
@@ -559,19 +559,19 @@
           },
           {
             "name": "py311-numpy",
-            "version": "1.26.4_11,1"
+            "version": "1.26.4_12,1"
           },
           {
             "name": "py311-packaging",
-            "version": "25.0"
+            "version": "26.0"
           },
           {
             "name": "python311",
-            "version": "3.11.15"
+            "version": "3.11.15_2"
           },
           {
             "name": "python313",
-            "version": "3.13.12"
+            "version": "3.13.13"
           },
           {
             "name": "readline",
@@ -579,15 +579,15 @@
           },
           {
             "name": "redis",
-            "version": "8.4.0_1"
+            "version": "8.6.2"
           },
           {
             "name": "s6",
-            "version": "2.13.2.0"
+            "version": "2.14.0.1"
           },
           {
             "name": "shaderc",
-            "version": "2025.5_1"
+            "version": "2026.1"
           },
           {
             "name": "shared-mime-info",
@@ -595,7 +595,7 @@
           },
           {
             "name": "skalibs",
-            "version": "2.14.4.0"
+            "version": "2.14.5.1"
           },
           {
             "name": "srt",
@@ -623,7 +623,7 @@
           },
           {
             "name": "suitesparse-config",
-            "version": "7.12.1"
+            "version": "7.12.2"
           },
           {
             "name": "suitesparse-umfpack",
@@ -631,11 +631,11 @@
           },
           {
             "name": "svt-av1",
-            "version": "3.1.2"
+            "version": "4.1.0"
           },
           {
             "name": "tiff",
-            "version": "4.7.1"
+            "version": "4.7.1_1"
           },
           {
             "name": "vmaf",
@@ -686,7 +686,7 @@
           },
           {
             "name": "Django",
-            "version": "6.0.3"
+            "version": "6.0.4"
           },
           {
             "name": "Incremental",
@@ -706,7 +706,7 @@
           },
           {
             "name": "RapidFuzz",
-            "version": "3.14.3"
+            "version": "3.14.5"
           },
           {
             "name": "Twisted",
@@ -786,7 +786,7 @@
           },
           {
             "name": "cryptography",
-            "version": "46.0.6"
+            "version": "46.0.7"
           },
           {
             "name": "daphne",
@@ -794,7 +794,7 @@
           },
           {
             "name": "dispatcharr",
-            "version": "0.22.1"
+            "version": "0.23.0"
           },
           {
             "name": "django-celery-beat",
@@ -814,7 +814,7 @@
           },
           {
             "name": "djangorestframework",
-            "version": "3.16.1"
+            "version": "3.17.1"
           },
           {
             "name": "djangorestframework_simplejwt",
@@ -830,11 +830,11 @@
           },
           {
             "name": "gevent",
-            "version": "25.9.1"
+            "version": "26.4.0"
           },
           {
             "name": "greenlet",
-            "version": "3.3.2"
+            "version": "3.4.0"
           },
           {
             "name": "h11",
@@ -866,7 +866,7 @@
           },
           {
             "name": "lxml",
-            "version": "6.0.2"
+            "version": "6.0.3"
           },
           {
             "name": "m3u8",
@@ -886,7 +886,7 @@
           },
           {
             "name": "packaging",
-            "version": "25.0"
+            "version": "26.0"
           },
           {
             "name": "pillow",
@@ -949,6 +949,10 @@
             "version": "2.9.0.post0"
           },
           {
+            "name": "python-gnupg",
+            "version": "0.5.6"
+          },
+          {
             "name": "pytz",
             "version": "2026.1.post1"
           },
@@ -962,7 +966,7 @@
           },
           {
             "name": "requests",
-            "version": "2.33.0"
+            "version": "2.33.1"
           },
           {
             "name": "service-identity",
@@ -986,7 +990,7 @@
           },
           {
             "name": "streamlink",
-            "version": "8.2.1"
+            "version": "8.3.0"
           },
           {
             "name": "trio",
@@ -1054,7 +1058,7 @@
           },
           {
             "name": "zope.interface",
-            "version": "8.2"
+            "version": "8.3"
           }
         ],
         "ruby": [],
@@ -1068,10 +1072,10 @@
         "java": 0,
         "node": 1,
         "php": 0,
-        "python": 94,
+        "python": 95,
         "ruby": 0,
         "rust": 0,
-        "total": 260
+        "total": 261
       }
     }
   }
