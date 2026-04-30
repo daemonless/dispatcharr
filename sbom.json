@@ -1,11 +1,11 @@
 {
-  "generated": "2026-04-17T10:21:51Z",
+  "generated": "2026-04-30T23:54:18Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.23.0",
       "arch": "amd64",
-      "generated": "2026-04-17T10:20:28Z",
+      "generated": "2026-04-30T23:52:52Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -87,11 +87,11 @@
           },
           {
             "name": "FreeBSD-openssl",
-            "version": "15.0"
+            "version": "15.0p2"
           },
           {
             "name": "FreeBSD-openssl-lib",
-            "version": "15.0"
+            "version": "15.0p2"
           },
           {
             "name": "FreeBSD-pkg-bootstrap",
@@ -103,7 +103,7 @@
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.0"
+            "version": "15.0p6"
           },
           {
             "name": "FreeBSD-tcpd",
@@ -267,7 +267,7 @@
           },
           {
             "name": "lcms2",
-            "version": "2.18"
+            "version": "2.19"
           },
           {
             "name": "lerc",
@@ -734,7 +734,7 @@
           },
           {
             "name": "cbor2",
-            "version": "5.9.0"
+            "version": "6.0.1"
           },
           {
             "name": "celery",
@@ -742,7 +742,7 @@
           },
           {
             "name": "certifi",
-            "version": "2026.2.25"
+            "version": "2026.4.22"
           },
           {
             "name": "cffi",
@@ -762,7 +762,7 @@
           },
           {
             "name": "click",
-            "version": "8.3.2"
+            "version": "8.3.3"
           },
           {
             "name": "click-didyoumean",
@@ -786,7 +786,7 @@
           },
           {
             "name": "cryptography",
-            "version": "46.0.7"
+            "version": "47.0.0"
           },
           {
             "name": "daphne",
@@ -834,7 +834,7 @@
           },
           {
             "name": "greenlet",
-            "version": "3.4.0"
+            "version": "3.5.0"
           },
           {
             "name": "h11",
@@ -846,7 +846,7 @@
           },
           {
             "name": "idna",
-            "version": "3.11"
+            "version": "3.13"
           },
           {
             "name": "inflection",
@@ -894,7 +894,7 @@
           },
           {
             "name": "pip",
-            "version": "26.0.1"
+            "version": "26.1"
           },
           {
             "name": "prompt_toolkit",
@@ -914,7 +914,7 @@
           },
           {
             "name": "pyOpenSSL",
-            "version": "26.0.0"
+            "version": "26.1.0"
           },
           {
             "name": "pyasn1",
@@ -1010,7 +1010,7 @@
           },
           {
             "name": "tzdata",
-            "version": "2026.1"
+            "version": "2026.2"
           },
           {
             "name": "tzlocal",
@@ -1054,11 +1054,11 @@
           },
           {
             "name": "zope.event",
-            "version": "6.1"
+            "version": "6.2"
           },
           {
             "name": "zope.interface",
-            "version": "8.3"
+            "version": "8.4"
           }
         ],
         "ruby": [],
