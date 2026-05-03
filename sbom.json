@@ -1,11 +1,11 @@
 {
-  "generated": "2026-04-30T23:54:18Z",
+  "generated": "2026-05-03T20:16:04Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.23.0",
+      "app_version": "v0.24.0",
       "arch": "amd64",
-      "generated": "2026-04-30T23:52:52Z",
+      "generated": "2026-05-03T20:14:46Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -794,7 +794,7 @@
           },
           {
             "name": "dispatcharr",
-            "version": "0.23.0"
+            "version": "0.24.0"
           },
           {
             "name": "django-celery-beat",
@@ -866,7 +866,7 @@
           },
           {
             "name": "lxml",
-            "version": "6.0.3"
+            "version": "6.1.0"
           },
           {
             "name": "m3u8",
@@ -906,7 +906,7 @@
           },
           {
             "name": "psycopg2",
-            "version": "2.9.11"
+            "version": "2.9.12"
           },
           {
             "name": "py-ubjson",
@@ -1038,7 +1038,7 @@
           },
           {
             "name": "wcwidth",
-            "version": "0.6.0"
+            "version": "0.7.0"
           },
           {
             "name": "websocket-client",
