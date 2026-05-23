@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-22T07:51:31Z",
+  "generated": "2026-05-23T20:53:03Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.25.0",
+      "app_version": "v0.25.1",
       "arch": "amd64",
-      "generated": "2026-05-22T07:50:12Z",
+      "generated": "2026-05-23T20:51:48Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -794,7 +794,7 @@
           },
           {
             "name": "dispatcharr",
-            "version": "0.25.0"
+            "version": "0.25.1"
           },
           {
             "name": "django-celery-beat",
