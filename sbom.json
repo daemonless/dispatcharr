@@ -1,11 +1,11 @@
 {
-  "generated": "2026-06-05T10:37:25Z",
+  "generated": "2026-06-10T22:35:21Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.25.1",
+      "app_version": "v0.26.0",
       "arch": "amd64",
-      "generated": "2026-06-05T10:36:10Z",
+      "generated": "2026-06-10T22:34:02Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -786,7 +786,7 @@
           },
           {
             "name": "cryptography",
-            "version": "48.0.0"
+            "version": "48.0.1"
           },
           {
             "name": "daphne",
@@ -794,7 +794,7 @@
           },
           {
             "name": "dispatcharr",
-            "version": "0.25.1"
+            "version": "0.26.0"
           },
           {
             "name": "django-celery-beat",
@@ -803,6 +803,10 @@
           {
             "name": "django-cors-headers",
             "version": "4.9.0"
+          },
+          {
+            "name": "django-db-geventpool",
+            "version": "4.0.8"
           },
           {
             "name": "django-filter",
@@ -814,7 +818,7 @@
           },
           {
             "name": "django-timezone-field",
-            "version": "7.2.1"
+            "version": "7.2.2"
           },
           {
             "name": "djangorestframework",
@@ -909,12 +913,8 @@
             "version": "7.2.2"
           },
           {
-            "name": "psycogreen",
-            "version": "1.0.2"
-          },
-          {
-            "name": "psycopg2",
-            "version": "2.9.12"
+            "name": "psycopg",
+            "version": "3.3.4"
           },
           {
             "name": "py-ubjson",
@@ -1034,7 +1034,7 @@
           },
           {
             "name": "wcwidth",
-            "version": "0.7.0"
+            "version": "0.8.1"
           },
           {
             "name": "websocket-client",
@@ -1046,7 +1046,7 @@
           },
           {
             "name": "yt-dlp",
-            "version": "2026.3.17"
+            "version": "2026.6.9"
           },
           {
             "name": "zope.event",
