@@ -11,3 +11,6 @@ cit:
   port: 9191
   health: /
   wait: 180
+  edge_threshold: 0.004
+  annotations:
+    - org.freebsd.jail.allow.sysvipc=true

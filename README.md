@@ -35,18 +35,18 @@ Before deploying, ensure your host environment is ready. See the [Quick Start Gu
 ```yaml
 services:
   dispatcharr:
-    image: ghcr.io/daemonless/dispatcharr:latest
+    image: "ghcr.io/daemonless/dispatcharr:latest"
     container_name: dispatcharr
     environment:
-      - TZ=UTC
-      - POSTGRES_DB=dispatcharr
-      - POSTGRES_USER=dispatcharr
-      - POSTGRES_PASSWORD=dispatcharr
-      - CELERY_NICE_LEVEL=5
+      - TZ=UTC  # Timezone (e.g. America/New_York)
+      - POSTGRES_DB=dispatcharr  # PostgreSQL database name (default: dispatcharr)
+      - POSTGRES_USER=dispatcharr  # PostgreSQL username (default: dispatcharr)
+      - POSTGRES_PASSWORD=dispatcharr  # PostgreSQL password (default: dispatcharr)
+      - CELERY_NICE_LEVEL=5  # niceness for Celery workers (default: 5)
     volumes:
       - "/path/to/containers/dispatcharr/data:/data"
     ports:
-      - 9191:9191
+      - "9191:9191"
     annotations:
       org.freebsd.jail.allow.sysvipc: "true"
     restart: unless-stopped
@@ -122,7 +122,7 @@ podman run -d --name dispatcharr \
 - name: Deploy dispatcharr
   containers.podman.podman_container:
     name: dispatcharr
-    image: ghcr.io/daemonless/dispatcharr:latest
+    image: "ghcr.io/daemonless/dispatcharr:latest"
     state: started
     restart_policy: always
     env:
@@ -138,8 +138,6 @@ podman run -d --name dispatcharr \
     annotation:
       org.freebsd.jail.allow.sysvipc: "true"
 ```
-
-Access at: `http://localhost:9191`
 
 ## Parameters
 

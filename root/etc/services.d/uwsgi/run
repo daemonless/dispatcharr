@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Ensure persistent data subdirs exist
-mkdir -p /data/postgres /data/redis /data/logo_cache /data/logs /data/backups /data/logos /data/epg /data/streams /data/epgs /data/m3us
-chown -R bsd:bsd /data/redis /data/logo_cache /data/logs /data/backups /data/logos /data/epg /data/streams /data/epgs /data/m3us
+mkdir -p /data/postgres /data/redis /data/logo_cache /data/logs /data/backups /data/logos /data/epg /data/streams /data/epgs /data/m3us /data/plugins
+chown -R bsd:bsd /data/redis /data/logo_cache /data/logs /data/backups /data/logos /data/epg /data/streams /data/epgs /data/m3us /data/plugins
 
 # Generate or load SECRET_KEY (persisted across restarts)
 KEYFILE=/data/secret_key

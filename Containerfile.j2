@@ -64,12 +64,13 @@ COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 # Patch pyproject.toml before install:
 #   torch/sentence-transformers: ML channel matching — no FreeBSD wheels for py3.13
 #   python-vlc: stream preview — heavy libvlc dependency, skipped for now
-#   psycopg2-binary: Linux-only; replaced with psycopg2 (builds against pg headers)
+#   psycopg[binary]: psycopg-binary has no FreeBSD wheels — drop the extra and
+#     use pure psycopg (ctypes "python" libpq impl; libpq.so from postgresql17-client)
 RUN sed -i '' \
         -e '/^    "torch/d' \
         -e '/^    "sentence-transformers/d' \
         -e '/^    "python-vlc/d' \
-        -e 's/psycopg2-binary/psycopg2/' \
+        -e 's/psycopg\[binary\]/psycopg/' \
         /app/pyproject.toml && \
     python3.13 -m venv --system-site-packages /dispatcharrpy && \
     /dispatcharrpy/bin/pip install --no-cache-dir --upgrade pip && \
