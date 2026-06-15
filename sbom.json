@@ -1,11 +1,11 @@
 {
-  "generated": "2026-06-10T22:35:21Z",
+  "generated": "2026-06-15T08:58:54Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.26.0",
       "arch": "amd64",
-      "generated": "2026-06-10T22:34:02Z",
+      "generated": "2026-06-15T08:57:34Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -23,7 +23,7 @@
           },
           {
             "name": "FreeBSD-certctl",
-            "version": "15.0"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-clibs",
@@ -43,15 +43,15 @@
           },
           {
             "name": "FreeBSD-fetch",
-            "version": "15.0"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-kerberos-lib",
-            "version": "15.0"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-libarchive",
-            "version": "15.0"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-libbsdstat",
@@ -67,7 +67,7 @@
           },
           {
             "name": "FreeBSD-libldns",
-            "version": "15.0"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-libmagic",
@@ -87,15 +87,15 @@
           },
           {
             "name": "FreeBSD-openssl",
-            "version": "15.0p2"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-openssl-lib",
-            "version": "15.0p2"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-pkg-bootstrap",
-            "version": "15.0"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-rc",
@@ -103,7 +103,7 @@
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.0p9"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-tcpd",
@@ -115,7 +115,7 @@
           },
           {
             "name": "FreeBSD-utilities",
-            "version": "15.0p9"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-xz-lib",
@@ -123,7 +123,7 @@
           },
           {
             "name": "FreeBSD-zfs-lib",
-            "version": "15.0"
+            "version": "15.0p10"
           },
           {
             "name": "FreeBSD-zlib",
@@ -786,7 +786,7 @@
           },
           {
             "name": "cryptography",
-            "version": "48.0.1"
+            "version": "49.0.0"
           },
           {
             "name": "daphne",
@@ -882,7 +882,7 @@
           },
           {
             "name": "msgpack",
-            "version": "1.1.2"
+            "version": "1.2.0"
           },
           {
             "name": "numpy",
@@ -922,7 +922,7 @@
           },
           {
             "name": "pyOpenSSL",
-            "version": "26.2.0"
+            "version": "26.3.0"
           },
           {
             "name": "pycountry",
@@ -1018,7 +1018,7 @@
           },
           {
             "name": "ujson",
-            "version": "5.12.1"
+            "version": "5.13.0"
           },
           {
             "name": "uritemplate",
