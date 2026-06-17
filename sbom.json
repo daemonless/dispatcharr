@@ -1,11 +1,11 @@
 {
-  "generated": "2026-06-15T08:58:54Z",
+  "generated": "2026-06-17T11:10:44Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.26.0",
+      "app_version": "v0.27.0",
       "arch": "amd64",
-      "generated": "2026-06-15T08:57:34Z",
+      "generated": "2026-06-17T11:09:29Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -567,11 +567,11 @@
           },
           {
             "name": "python311",
-            "version": "3.11.15_2"
+            "version": "3.11.15_3"
           },
           {
             "name": "python313",
-            "version": "3.13.13"
+            "version": "3.13.14"
           },
           {
             "name": "readline",
@@ -742,7 +742,7 @@
           },
           {
             "name": "certifi",
-            "version": "2026.5.20"
+            "version": "2026.6.17"
           },
           {
             "name": "cffi",
@@ -794,7 +794,7 @@
           },
           {
             "name": "dispatcharr",
-            "version": "0.26.0"
+            "version": "0.27.0"
           },
           {
             "name": "django-celery-beat",
@@ -1010,7 +1010,7 @@
           },
           {
             "name": "tzlocal",
-            "version": "5.3.1"
+            "version": "5.4.3"
           },
           {
             "name": "uWSGI",
