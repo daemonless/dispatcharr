@@ -76,6 +76,7 @@ services:
     name: dispatcharr
     options:
       - container: 'boot args:--pull'
+      - expose="9191:9191 proto:tcp" \
     oci:
       user: root
       environment:
@@ -100,6 +101,7 @@ OPTION overwrite=force
 OPTION from=ghcr.io/daemonless/dispatcharr:${tag}
 SET allow.sysvipc=1
 ```
+**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Podman CLI
 
@@ -115,6 +117,25 @@ podman run -d --name dispatcharr \
   -v /path/to/containers/dispatcharr/data:/data \
   ghcr.io/daemonless/dispatcharr:latest
 ```
+
+### AppJail
+
+```bash
+appjail oci run -Pd \
+  -o overwrite=force \
+  -o container="args:--pull" \
+  -o virtualnet=":<random> default" \
+  -o nat \
+  -o expose="9191:9191 proto:tcp" \
+  -e TZ=UTC \
+  -e POSTGRES_DB=dispatcharr \
+  -e POSTGRES_USER=dispatcharr \
+  -e POSTGRES_PASSWORD=dispatcharr \
+  -e CELERY_NICE_LEVEL=5 \
+  -o fstab="/path/to/containers/dispatcharr/data /data <pseudofs>" \
+  ghcr.io/daemonless/dispatcharr:latest dispatcharr
+```
+**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Ansible
 
