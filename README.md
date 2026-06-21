@@ -139,6 +139,8 @@ podman run -d --name dispatcharr \
       org.freebsd.jail.allow.sysvipc: "true"
 ```
 
+Access at: `http://localhost:9191`
+
 ## Parameters
 
 ### Environment Variables

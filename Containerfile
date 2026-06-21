@@ -4,7 +4,7 @@
 # Source: Containerfile.j2
 # --------------------------------------------------------------------------
 
-ARG BASE_VERSION=15
+ARG BASE_VERSION=15.1
 ARG UPSTREAM_URL="https://api.github.com/repos/Dispatcharr/Dispatcharr/releases/latest"
 ARG UPSTREAM_JQ=".tag_name"
 
