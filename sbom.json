@@ -1,11 +1,11 @@
 {
-  "generated": "2026-06-21T14:09:56Z",
+  "generated": "2026-06-26T06:58:19Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.27.0",
+      "app_version": "v0.27.1",
       "arch": "amd64",
-      "generated": "2026-06-21T14:08:38Z",
+      "generated": "2026-06-26T06:57:05Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -147,7 +147,7 @@
           },
           {
             "name": "aom",
-            "version": "3.13.3"
+            "version": "3.14.1"
           },
           {
             "name": "bash",
@@ -499,7 +499,7 @@
           },
           {
             "name": "nginx",
-            "version": "1.30.2,3"
+            "version": "1.30.3,3"
           },
           {
             "name": "oniguruma",
@@ -511,7 +511,7 @@
           },
           {
             "name": "openexr",
-            "version": "3.4.12"
+            "version": "3.4.13"
           },
           {
             "name": "openjpeg",
@@ -575,7 +575,7 @@
           },
           {
             "name": "python311",
-            "version": "3.11.15_3"
+            "version": "3.11.15_4"
           },
           {
             "name": "python313",
@@ -694,7 +694,7 @@
           },
           {
             "name": "Django",
-            "version": "6.0.5"
+            "version": "6.0.6"
           },
           {
             "name": "Incremental",
@@ -770,7 +770,7 @@
           },
           {
             "name": "click",
-            "version": "8.4.1"
+            "version": "8.4.2"
           },
           {
             "name": "click-didyoumean",
@@ -802,7 +802,7 @@
           },
           {
             "name": "dispatcharr",
-            "version": "0.27.0"
+            "version": "0.27.1"
           },
           {
             "name": "django-celery-beat",
@@ -846,7 +846,7 @@
           },
           {
             "name": "gevent",
-            "version": "26.4.0"
+            "version": "26.5.0"
           },
           {
             "name": "greenlet",
@@ -882,7 +882,7 @@
           },
           {
             "name": "lxml",
-            "version": "6.1.0"
+            "version": "6.1.1"
           },
           {
             "name": "m3u8",
@@ -966,7 +966,7 @@
           },
           {
             "name": "requests",
-            "version": "2.33.1"
+            "version": "2.34.2"
           },
           {
             "name": "service-identity",
