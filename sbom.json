@@ -1,11 +1,11 @@
 {
-  "generated": "2026-06-26T06:58:19Z",
+  "generated": "2026-06-30T20:11:42Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.27.1",
+      "app_version": "v0.27.2",
       "arch": "amd64",
-      "generated": "2026-06-26T06:57:05Z",
+      "generated": "2026-06-30T20:10:27Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -31,7 +31,7 @@
           },
           {
             "name": "FreeBSD-clibs-lib32",
-            "version": "15.1"
+            "version": "15.1p1"
           },
           {
             "name": "FreeBSD-ctf-lib",
@@ -802,7 +802,7 @@
           },
           {
             "name": "dispatcharr",
-            "version": "0.27.1"
+            "version": "0.27.2"
           },
           {
             "name": "django-celery-beat",
@@ -850,7 +850,7 @@
           },
           {
             "name": "greenlet",
-            "version": "3.5.2"
+            "version": "3.5.3"
           },
           {
             "name": "h11",
@@ -962,7 +962,7 @@
           },
           {
             "name": "regex",
-            "version": "2026.5.9"
+            "version": "2026.6.28"
           },
           {
             "name": "requests",
@@ -1014,7 +1014,7 @@
           },
           {
             "name": "tzlocal",
-            "version": "5.4.3"
+            "version": "5.4.4"
           },
           {
             "name": "uWSGI",
@@ -1038,7 +1038,7 @@
           },
           {
             "name": "wcwidth",
-            "version": "0.8.1"
+            "version": "0.8.2"
           },
           {
             "name": "websocket-client",
