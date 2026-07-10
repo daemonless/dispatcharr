@@ -1,11 +1,11 @@
 {
-  "generated": "2026-06-30T20:11:42Z",
+  "generated": "2026-07-10T22:47:02Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.27.2",
       "arch": "amd64",
-      "generated": "2026-06-30T20:10:27Z",
+      "generated": "2026-07-10T22:45:36Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -27,7 +27,7 @@
           },
           {
             "name": "FreeBSD-clibs",
-            "version": "15.1"
+            "version": "15.1p1"
           },
           {
             "name": "FreeBSD-clibs-lib32",
@@ -107,7 +107,7 @@
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.1"
+            "version": "15.1p1"
           },
           {
             "name": "FreeBSD-tcpd",
@@ -119,7 +119,7 @@
           },
           {
             "name": "FreeBSD-utilities",
-            "version": "15.1"
+            "version": "15.1p1"
           },
           {
             "name": "FreeBSD-xz-lib",
@@ -127,7 +127,7 @@
           },
           {
             "name": "FreeBSD-zfs-lib",
-            "version": "15.1"
+            "version": "15.1p1"
           },
           {
             "name": "FreeBSD-zlib",
@@ -742,7 +742,7 @@
           },
           {
             "name": "cbor2",
-            "version": "6.1.2"
+            "version": "6.1.3"
           },
           {
             "name": "celery",
@@ -754,7 +754,7 @@
           },
           {
             "name": "cffi",
-            "version": "2.0.0"
+            "version": "2.1.0"
           },
           {
             "name": "channels",
@@ -766,7 +766,7 @@
           },
           {
             "name": "charset-normalizer",
-            "version": "3.4.7"
+            "version": "3.4.9"
           },
           {
             "name": "click",
@@ -838,7 +838,7 @@
           },
           {
             "name": "drf-spectacular",
-            "version": "0.29.0"
+            "version": "0.30.0"
           },
           {
             "name": "example",
@@ -906,7 +906,7 @@
           },
           {
             "name": "pillow",
-            "version": "12.2.0"
+            "version": "12.3.0"
           },
           {
             "name": "pip",
@@ -962,7 +962,7 @@
           },
           {
             "name": "regex",
-            "version": "2026.6.28"
+            "version": "2026.7.10"
           },
           {
             "name": "requests",
@@ -1006,11 +1006,11 @@
           },
           {
             "name": "typing_extensions",
-            "version": "4.15.0"
+            "version": "4.16.0"
           },
           {
             "name": "tzdata",
-            "version": "2026.2"
+            "version": "2026.3"
           },
           {
             "name": "tzlocal",
@@ -1050,7 +1050,7 @@
           },
           {
             "name": "yt-dlp",
-            "version": "2026.6.9"
+            "version": "2026.7.4"
           },
           {
             "name": "zope.event",
