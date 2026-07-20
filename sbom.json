@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-18T09:53:25Z",
+  "generated": "2026-07-20T07:53:39Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.27.2",
+      "app_version": "v0.28.0",
       "arch": "amd64",
-      "generated": "2026-07-18T09:52:02Z",
+      "generated": "2026-07-20T07:52:21Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -75,6 +75,10 @@
           },
           {
             "name": "FreeBSD-libucl",
+            "version": "15.1"
+          },
+          {
+            "name": "FreeBSD-locales",
             "version": "15.1"
           },
           {
@@ -499,7 +503,7 @@
           },
           {
             "name": "nginx",
-            "version": "1.30.3_2,3"
+            "version": "1.30.4,3"
           },
           {
             "name": "oniguruma",
@@ -814,7 +818,7 @@
           },
           {
             "name": "dispatcharr",
-            "version": "0.27.2"
+            "version": "0.28.0"
           },
           {
             "name": "django-celery-beat",
@@ -974,7 +978,7 @@
           },
           {
             "name": "regex",
-            "version": "2026.7.10"
+            "version": "2026.7.19"
           },
           {
             "name": "requests",
@@ -1079,7 +1083,7 @@
       "source": "upstream",
       "summary": {
         "dotnet": 0,
-        "freebsd": 160,
+        "freebsd": 161,
         "go": 0,
         "java": 0,
         "node": 11,
@@ -1087,7 +1091,7 @@
         "python": 93,
         "ruby": 0,
         "rust": 0,
-        "total": 264
+        "total": 265
       }
     }
   }
