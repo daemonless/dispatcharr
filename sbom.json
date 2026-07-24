@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-20T22:20:23Z",
+  "generated": "2026-07-24T07:35:32Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.28.1",
+      "app_version": "v0.28.2",
       "arch": "amd64",
-      "generated": "2026-07-20T22:19:04Z",
+      "generated": "2026-07-24T07:34:11Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -766,7 +766,7 @@
           },
           {
             "name": "certifi",
-            "version": "2026.6.17"
+            "version": "2026.7.22"
           },
           {
             "name": "cffi",
@@ -814,11 +814,11 @@
           },
           {
             "name": "daphne",
-            "version": "4.2.2"
+            "version": "4.2.3"
           },
           {
             "name": "dispatcharr",
-            "version": "0.28.1"
+            "version": "0.28.2"
           },
           {
             "name": "django-celery-beat",
@@ -866,7 +866,7 @@
           },
           {
             "name": "greenlet",
-            "version": "3.5.3"
+            "version": "3.5.4"
           },
           {
             "name": "h11",
