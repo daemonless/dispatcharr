@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-24T07:35:32Z",
+  "generated": "2026-07-28T23:57:46Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.28.2",
       "arch": "amd64",
-      "generated": "2026-07-24T07:34:11Z",
+      "generated": "2026-07-28T23:56:25Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -930,7 +930,7 @@
           },
           {
             "name": "prompt_toolkit",
-            "version": "3.0.52"
+            "version": "3.0.53"
           },
           {
             "name": "psutil",
@@ -970,7 +970,7 @@
           },
           {
             "name": "pytz",
-            "version": "2026.2"
+            "version": "2026.3.post1"
           },
           {
             "name": "redis",
