@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-01T14:38:06Z",
+  "generated": "2026-08-08T22:32:31Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.28.2",
       "arch": "amd64",
-      "generated": "2026-08-01T14:34:35Z",
+      "generated": "2026-08-08T22:28:24Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -975,7 +975,7 @@
               "GPLv1+"
             ],
             "name": "perl5",
-            "version": "5.42.2"
+            "version": "5.42.3"
           },
           {
             "licenses": [
@@ -1062,7 +1062,7 @@
               "SSPLv1"
             ],
             "name": "redis",
-            "version": "8.8.0"
+            "version": "8.8.1"
           },
           {
             "licenses": [
@@ -1307,7 +1307,7 @@
           {
             "name": "cbor2",
             "purl": "",
-            "version": "6.1.3"
+            "version": "6.1.4"
           },
           {
             "name": "celery",
@@ -1322,7 +1322,7 @@
           {
             "name": "cffi",
             "purl": "",
-            "version": "2.1.0"
+            "version": "2.1.1"
           },
           {
             "name": "channels",
@@ -1372,7 +1372,7 @@
           {
             "name": "cryptography",
             "purl": "",
-            "version": "49.0.0"
+            "version": "50.0.0"
           },
           {
             "name": "daphne",
@@ -1527,7 +1527,7 @@
           {
             "name": "pip",
             "purl": "",
-            "version": "26.2"
+            "version": "26.2.1"
           },
           {
             "name": "platformdirs",
@@ -1552,7 +1552,7 @@
           {
             "name": "pyOpenSSL",
             "purl": "",
-            "version": "26.3.0"
+            "version": "26.4.0"
           },
           {
             "name": "pycountry",
@@ -1657,7 +1657,7 @@
           {
             "name": "streamlink",
             "purl": "",
-            "version": "8.4.0"
+            "version": "8.5.0"
           },
           {
             "name": "tomli",

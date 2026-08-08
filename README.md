@@ -11,6 +11,9 @@ Source: dbuild templates
 
 Dispatcharr — stream dispatching and channel management.
 
+> [!WARNING]
+> **Requires ocijail ≥ 0.6.0 (annotation support).** This image needs the jail permission **allow.sysvipc**, applied via OCI annotations. FreeBSD **quarterly ships ocijail 0.4.0, which has no annotation support** — the container starts but the permission is silently dropped, so the app can crash or misbehave at runtime. Point your pkg repos at the `latest` branch (ocijail ≥ 0.6.0), then run with the annotation flag below. See the [ocijail guide](https://daemonless.io/guides/ocijail-patch/).
+
 | | |
 |---|---|
 | **Port** | 9191 |
@@ -19,13 +22,11 @@ Dispatcharr — stream dispatching and channel management.
 | **Website** | [https://dispatcharr.io/](https://dispatcharr.io/) |
 
 ## Version Tags
-
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
 | `latest` | **FreeBSD Port**. Built from latest FreeBSD packages. | Most users. Matches Linux Docker behavior. |
 
 ## Prerequisites
-
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
 
 ## Deployment
@@ -43,8 +44,13 @@ services:
       - POSTGRES_USER=dispatcharr  # PostgreSQL username (default: dispatcharr)
       - POSTGRES_PASSWORD=dispatcharr  # PostgreSQL password (default: dispatcharr)
       - CELERY_NICE_LEVEL=5  # niceness for Celery workers (default: 5)
+      - DISPATCHARR_PORT=  # Web UI port (default: 9191)
+      - DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY>  # Django secret key — auto-generated if not set, persisted to /data/secret_key
+      - REDIS_HOST=  # Redis hostname (default: 127.0.0.1)
+      - REDIS_PORT=  # Redis port (default: 6379)
+      - DISABLE_ML_DOWNLOADS=  # Set false to enable ML channel matching (requires torch — not available in this build)
     volumes:
-      - "/path/to/containers/dispatcharr/data:/data"
+      - "/path/to/containers/dispatcharr:/data"
     ports:
       - "9191:9191"
     annotations:
@@ -53,21 +59,29 @@ services:
 ```
 
 ### AppJail Director
-
 **.env**:
 
 ```
+# .env
+
 DIRECTOR_PROJECT=dispatcharr
 TZ=UTC
 POSTGRES_DB=dispatcharr
 POSTGRES_USER=dispatcharr
 POSTGRES_PASSWORD=dispatcharr
 CELERY_NICE_LEVEL=5
+DISPATCHARR_PORT=
+DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY>
+REDIS_HOST=
+REDIS_PORT=
+DISABLE_ML_DOWNLOADS=
 ```
 
 **appjail-director.yml**:
 
 ```yaml
+# appjail-director.yml
+
 options:
   - virtualnet: ':<random> default'
   - nat:
@@ -76,7 +90,7 @@ services:
     name: dispatcharr
     options:
       - container: 'boot args:--pull'
-      - expose="9191:9191 proto:tcp" \
+      - expose: '9191:9191 proto:tcp'
     oci:
       user: root
       environment:
@@ -85,16 +99,23 @@ services:
         - POSTGRES_USER: !ENV '${POSTGRES_USER}'
         - POSTGRES_PASSWORD: !ENV '${POSTGRES_PASSWORD}'
         - CELERY_NICE_LEVEL: !ENV '${CELERY_NICE_LEVEL}'
+        - DISPATCHARR_PORT: !ENV '${DISPATCHARR_PORT}'
+        - DJANGO_SECRET_KEY: !ENV '${DJANGO_SECRET_KEY}'
+        - REDIS_HOST: !ENV '${REDIS_HOST}'
+        - REDIS_PORT: !ENV '${REDIS_PORT}'
+        - DISABLE_ML_DOWNLOADS: !ENV '${DISABLE_ML_DOWNLOADS}'
     volumes:
-      - dispatcharr_data: /data
+      - dispatcharr: /data
 volumes:
-  dispatcharr_data:
-    device: '/path/to/containers/dispatcharr/data'
+  dispatcharr:
+    device: '/path/to/containers/dispatcharr'
 ```
 
 **Makejail**:
 
 ```
+# Makejail
+
 ARG tag=latest
 
 OPTION overwrite=force
@@ -114,7 +135,12 @@ podman run -d --name dispatcharr \
   -e POSTGRES_USER=dispatcharr \
   -e POSTGRES_PASSWORD=dispatcharr \
   -e CELERY_NICE_LEVEL=5 \
-  -v /path/to/containers/dispatcharr/data:/data \
+  -e DISPATCHARR_PORT= \
+  -e DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY> \
+  -e REDIS_HOST= \
+  -e REDIS_PORT= \
+  -e DISABLE_ML_DOWNLOADS= \
+  -v /path/to/containers/dispatcharr:/data \
   ghcr.io/daemonless/dispatcharr:latest
 ```
 
@@ -132,7 +158,12 @@ appjail oci run -Pd \
   -e POSTGRES_USER=dispatcharr \
   -e POSTGRES_PASSWORD=dispatcharr \
   -e CELERY_NICE_LEVEL=5 \
-  -o fstab="/path/to/containers/dispatcharr/data /data <pseudofs>" \
+  -e DISPATCHARR_PORT= \
+  -e DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY> \
+  -e REDIS_HOST= \
+  -e REDIS_PORT= \
+  -e DISABLE_ML_DOWNLOADS= \
+  -o fstab="/path/to/containers/dispatcharr /data <pseudofs>" \
   ghcr.io/daemonless/dispatcharr:latest dispatcharr
 ```
 **Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
@@ -152,10 +183,15 @@ appjail oci run -Pd \
       POSTGRES_USER: "dispatcharr"
       POSTGRES_PASSWORD: "dispatcharr"
       CELERY_NICE_LEVEL: "5"
+      DISPATCHARR_PORT: ""
+      DJANGO_SECRET_KEY: "<DJANGO_SECRET_KEY>"
+      REDIS_HOST: ""
+      REDIS_PORT: ""
+      DISABLE_ML_DOWNLOADS: ""
     ports:
       - "9191:9191"
     volumes:
-      - "/path/to/containers/dispatcharr/data:/data"
+      - "/path/to/containers/dispatcharr:/data"
     annotation:
       org.freebsd.jail.allow.sysvipc: "true"
 ```
@@ -173,6 +209,11 @@ Access at: `http://localhost:9191`
 | `POSTGRES_USER` | `dispatcharr` | PostgreSQL username (default: dispatcharr) |
 | `POSTGRES_PASSWORD` | `dispatcharr` | PostgreSQL password (default: dispatcharr) |
 | `CELERY_NICE_LEVEL` | `5` | niceness for Celery workers (default: 5) |
+| `DISPATCHARR_PORT` | `` | Web UI port (default: 9191) |
+| `DJANGO_SECRET_KEY` | `<DJANGO_SECRET_KEY>` | Django secret key — auto-generated if not set, persisted to /data/secret_key |
+| `REDIS_HOST` | `` | Redis hostname (default: 127.0.0.1) |
+| `REDIS_PORT` | `` | Redis port (default: 6379) |
+| `DISABLE_ML_DOWNLOADS` | `` | Set false to enable ML channel matching (requires torch — not available in this build) |
 
 ### Volumes
 
