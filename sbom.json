@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-08T22:32:31Z",
+  "generated": "2026-08-10T06:56:27Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.28.2",
+      "app_version": "v0.29.0",
       "arch": "amd64",
-      "generated": "2026-08-08T22:28:24Z",
+      "generated": "2026-08-10T06:52:23Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1247,7 +1247,7 @@
           {
             "name": "Django",
             "purl": "",
-            "version": "6.0.6"
+            "version": "6.0.7"
           },
           {
             "name": "Incremental",
@@ -1382,7 +1382,7 @@
           {
             "name": "dispatcharr",
             "purl": "",
-            "version": "0.28.2"
+            "version": "0.29.0"
           },
           {
             "name": "distlib",
@@ -1447,7 +1447,7 @@
           {
             "name": "gevent",
             "purl": "",
-            "version": "26.5.0"
+            "version": "26.7.0"
           },
           {
             "name": "greenlet",
