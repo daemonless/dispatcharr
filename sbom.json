@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-10T06:56:27Z",
+  "generated": "2026-08-26T08:16:02Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.29.0",
       "arch": "amd64",
-      "generated": "2026-08-10T06:52:23Z",
+      "generated": "2026-08-26T08:13:16Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -295,7 +295,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.125"
+            "version": "3.126.1"
           },
           {
             "licenses": [
@@ -925,7 +925,7 @@
               "BSD3CLAUSE"
             ],
             "name": "openexr",
-            "version": "3.4.13_1"
+            "version": "3.4.15"
           },
           {
             "licenses": [
@@ -1003,14 +1003,14 @@
               "PostgreSQL"
             ],
             "name": "postgresql17-client",
-            "version": "17.10"
+            "version": "17.11"
           },
           {
             "licenses": [
               "PostgreSQL"
             ],
             "name": "postgresql17-server",
-            "version": "17.10"
+            "version": "17.11"
           },
           {
             "licenses": [
@@ -1039,14 +1039,14 @@
               "PSFL"
             ],
             "name": "python312",
-            "version": "3.12.13_3"
+            "version": "3.12.14"
           },
           {
             "licenses": [
               "PSFL"
             ],
             "name": "python313",
-            "version": "3.13.14"
+            "version": "3.13.15"
           },
           {
             "licenses": [
@@ -1337,7 +1337,7 @@
           {
             "name": "charset-normalizer",
             "purl": "",
-            "version": "3.4.9"
+            "version": "3.5.1"
           },
           {
             "name": "click",
@@ -1372,7 +1372,7 @@
           {
             "name": "cryptography",
             "purl": "",
-            "version": "50.0.0"
+            "version": "50.0.1"
           },
           {
             "name": "daphne",
@@ -1452,7 +1452,7 @@
           {
             "name": "greenlet",
             "purl": "",
-            "version": "3.5.4"
+            "version": "3.5.5"
           },
           {
             "name": "h11",
@@ -1652,7 +1652,7 @@
           {
             "name": "sqlparse",
             "purl": "",
-            "version": "0.5.5"
+            "version": "0.6.0"
           },
           {
             "name": "streamlink",
@@ -1672,7 +1672,7 @@
           {
             "name": "trio",
             "purl": "",
-            "version": "0.33.0"
+            "version": "0.34.0"
           },
           {
             "name": "trio-websocket",
@@ -1747,7 +1747,7 @@
           {
             "name": "yt-dlp",
             "purl": "",
-            "version": "2026.7.4"
+            "version": "2026.8.19"
           },
           {
             "name": "zope.event",
@@ -1757,7 +1757,7 @@
           {
             "name": "zope.interface",
             "purl": "",
-            "version": "8.5"
+            "version": "8.6"
           }
         ],
         "ruby": [],

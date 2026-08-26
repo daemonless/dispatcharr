@@ -11,9 +11,6 @@ Source: dbuild templates
 
 Dispatcharr — stream dispatching and channel management.
 
-> [!WARNING]
-> **Requires ocijail ≥ 0.6.0 (annotation support).** This image needs the jail permission **allow.sysvipc**, applied via OCI annotations. FreeBSD **quarterly ships ocijail 0.4.0, which has no annotation support** — the container starts but the permission is silently dropped, so the app can crash or misbehave at runtime. Point your pkg repos at the `latest` branch (ocijail ≥ 0.6.0), then run with the annotation flag below. See the [ocijail guide](https://daemonless.io/guides/ocijail-patch/).
-
 | | |
 |---|---|
 | **Port** | 9191 |
@@ -24,7 +21,7 @@ Dispatcharr — stream dispatching and channel management.
 ## Version Tags
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
-| `latest` | **FreeBSD Port**. Built from latest FreeBSD packages. | Most users. Matches Linux Docker behavior. |
+| `latest` | **FreeBSD Port**. Built from latest FreeBSD packages. | Most users — recommended. |
 
 ## Prerequisites
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
@@ -55,8 +52,11 @@ services:
       - "9191:9191"
     annotations:
       org.freebsd.jail.allow.sysvipc: "true"
-    restart: unless-stopped
+    # always (not unless-stopped) so FreeBSD's podman rc.d auto-starts it at boot
+    restart: always
 ```
+
+Save as `compose.yaml`, then run `podman-compose up -d`.
 
 ### AppJail Director
 **.env**:
@@ -122,6 +122,9 @@ OPTION overwrite=force
 OPTION from=ghcr.io/daemonless/dispatcharr:${tag}
 SET allow.sysvipc=1
 ```
+
+Save the files above, then run `appjail-director up`.
+
 **Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Podman CLI
@@ -143,6 +146,8 @@ podman run -d --name dispatcharr \
   -v /path/to/containers/dispatcharr:/data \
   ghcr.io/daemonless/dispatcharr:latest
 ```
+
+Save as `run.sh`, then run `sh run.sh`.
 
 ### AppJail
 
@@ -166,7 +171,52 @@ appjail oci run -Pd \
   -o fstab="/path/to/containers/dispatcharr /data <pseudofs>" \
   ghcr.io/daemonless/dispatcharr:latest dispatcharr
 ```
+
+Save as `run.sh`, then run `sh run.sh`.
+
 **Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
+
+### Bastille
+
+> [!WARNING]
+> Bastille's OCI support is **experimental**. It requires `buildah`, shares the host network stack (`inherit`), and persists image-declared volumes under `--data-path`.
+
+```yaml
+services:
+  dispatcharr:
+    image: "ghcr.io/daemonless/dispatcharr:latest"
+    container_name: dispatcharr
+    network_mode: host  # jail shares host networking
+    environment:
+      - TZ=UTC
+      - POSTGRES_DB=dispatcharr
+      - POSTGRES_USER=dispatcharr
+      - POSTGRES_PASSWORD=dispatcharr
+      - CELERY_NICE_LEVEL=5
+      - DISPATCHARR_PORT=
+      - DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY>
+      - REDIS_HOST=
+      - REDIS_PORT=
+      - DISABLE_ML_DOWNLOADS=
+```
+
+Save as `podman-compose.yml`, then run `bastille up`. Or via CLI:
+
+```bash
+bastille create -O \
+  --env TZ=UTC \
+  --env POSTGRES_DB=dispatcharr \
+  --env POSTGRES_USER=dispatcharr \
+  --env POSTGRES_PASSWORD=dispatcharr \
+  --env CELERY_NICE_LEVEL=5 \
+  --env DISPATCHARR_PORT= \
+  --env DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY> \
+  --env REDIS_HOST= \
+  --env REDIS_PORT= \
+  --env DISABLE_ML_DOWNLOADS= \
+  --data-path /path/to/containers/dispatcharr \
+  dispatcharr ghcr.io/daemonless/dispatcharr:latest inherit
+```
 
 ### Ansible
 
@@ -195,6 +245,8 @@ appjail oci run -Pd \
     annotation:
       org.freebsd.jail.allow.sysvipc: "true"
 ```
+
+Save as `dispatcharr-deploy.yaml`, then run `ansible-playbook dispatcharr-deploy.yaml`.
 
 Access at: `http://localhost:9191`
 
