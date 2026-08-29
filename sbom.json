@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-26T08:16:02Z",
+  "generated": "2026-08-29T22:07:51Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.29.0",
+      "app_version": "v0.30.0",
       "arch": "amd64",
-      "generated": "2026-08-26T08:13:16Z",
+      "generated": "2026-08-29T22:04:47Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -161,7 +161,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-openssl-lib",
-            "version": "15.1"
+            "version": "15.1p3"
           },
           {
             "licenses": [
@@ -189,7 +189,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-runtime",
-            "version": "15.1p2"
+            "version": "15.1p3"
           },
           {
             "licenses": [
@@ -295,7 +295,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.126.1"
+            "version": "3.127"
           },
           {
             "licenses": [
@@ -1342,7 +1342,7 @@
           {
             "name": "click",
             "purl": "",
-            "version": "8.4.2"
+            "version": "8.5.0"
           },
           {
             "name": "click-didyoumean",
@@ -1382,7 +1382,7 @@
           {
             "name": "dispatcharr",
             "purl": "",
-            "version": "0.29.0"
+            "version": "0.30.0"
           },
           {
             "name": "distlib",
@@ -1587,7 +1587,7 @@
           {
             "name": "python-crontab",
             "purl": "",
-            "version": "3.3.0"
+            "version": "3.4.0"
           },
           {
             "name": "python-dateutil",
@@ -1732,12 +1732,12 @@
           {
             "name": "wcwidth",
             "purl": "",
-            "version": "0.8.2"
+            "version": "0.8.3"
           },
           {
             "name": "websocket-client",
             "purl": "",
-            "version": "1.9.0"
+            "version": "1.9.1"
           },
           {
             "name": "wsproto",
