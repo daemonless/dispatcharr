@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-29T22:07:51Z",
+  "generated": "2026-08-30T17:32:10Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.30.0",
       "arch": "amd64",
-      "generated": "2026-08-29T22:04:47Z",
+      "generated": "2026-08-30T17:29:12Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
