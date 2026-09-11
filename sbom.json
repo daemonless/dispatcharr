@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-30T17:32:10Z",
+  "generated": "2026-09-11T23:51:17Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.30.0",
       "arch": "amd64",
-      "generated": "2026-08-30T17:29:12Z",
+      "generated": "2026-09-11T23:48:22Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -310,7 +310,7 @@
               "BSD2CLAUSE"
             ],
             "name": "dav1d",
-            "version": "1.5.3_1"
+            "version": "1.5.4"
           },
           {
             "licenses": [
@@ -1257,7 +1257,7 @@
           {
             "name": "PyJWT",
             "purl": "",
-            "version": "2.13.0"
+            "version": "2.14.0"
           },
           {
             "name": "PySocks",
@@ -1547,7 +1547,7 @@
           {
             "name": "psycopg",
             "purl": "",
-            "version": "3.3.4"
+            "version": "3.3.5"
           },
           {
             "name": "pyOpenSSL",
@@ -1607,7 +1607,7 @@
           {
             "name": "regex",
             "purl": "",
-            "version": "2026.7.19"
+            "version": "2026.9.10"
           },
           {
             "name": "requests",
@@ -1712,7 +1712,7 @@
           {
             "name": "ujson",
             "purl": "",
-            "version": "5.13.0"
+            "version": "6.0.0"
           },
           {
             "name": "uritemplate",
@@ -1737,7 +1737,7 @@
           {
             "name": "websocket-client",
             "purl": "",
-            "version": "1.9.1"
+            "version": "1.9.2"
           },
           {
             "name": "wsproto",

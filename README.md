@@ -89,8 +89,9 @@ services:
   dispatcharr:
     name: dispatcharr
     options:
-      - container: 'boot args:--pull'
+      - container: 'args:--pull'
       - expose: '9191:9191 proto:tcp'
+      - template: !ENV '${PWD}/template.conf'
     oci:
       user: root
       environment:
@@ -118,14 +119,30 @@ volumes:
 
 ARG tag=latest
 
+OPTION container=boot
 OPTION overwrite=force
 OPTION from=ghcr.io/daemonless/dispatcharr:${tag}
-SET allow.sysvipc=1
+```
+
+**template.conf**:
+
+```
+# template.conf
+
+exec.start: "/bin/sh /etc/rc"
+exec.stop: "/bin/sh /etc/rc.shutdown jail"
+mount.devfs
+persist
+allow.sysvipc
 ```
 
 Save the files above, then run `appjail-director up`.
 
-**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
+
+> [!WARNING]
+> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
+>
+> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
 
 ### Podman CLI
 
@@ -151,12 +168,14 @@ Save as `run.sh`, then run `sh run.sh`.
 
 ### AppJail
 
+
 ```bash
 appjail oci run -Pd \
   -o overwrite=force \
   -o container="args:--pull" \
   -o virtualnet=":<random> default" \
   -o nat \
+  -o template=template.conf \
   -o expose="9191:9191 proto:tcp" \
   -e TZ=UTC \
   -e POSTGRES_DB=dispatcharr \
@@ -172,21 +191,37 @@ appjail oci run -Pd \
   ghcr.io/daemonless/dispatcharr:latest dispatcharr
 ```
 
-Save as `run.sh`, then run `sh run.sh`.
+**template.conf**:
+```
+# template.conf
 
-**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
+exec.start: "/bin/sh /etc/rc"
+exec.stop: "/bin/sh /etc/rc.shutdown jail"
+mount.devfs
+persist
+allow.sysvipc
+```
+
+Save the files above, then run `sh run.sh`.
+
+
+> [!WARNING]
+> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
+>
+> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
 
 ### Bastille
 
 > [!WARNING]
-> Bastille's OCI support is **experimental**. It requires `buildah`, shares the host network stack (`inherit`), and persists image-declared volumes under `--data-path`.
+> Bastille's OCI support is **experimental**. It requires `buildah` and shares the host network stack (`inherit`). Mount volumes with `--volume HOST JAIL`; without it, image-declared volumes are stored under `${bastille_volumesdir}/${jail}`.
 
 ```yaml
 services:
   dispatcharr:
+    name: dispatcharr
     image: "ghcr.io/daemonless/dispatcharr:latest"
-    container_name: dispatcharr
-    network_mode: host  # jail shares host networking
+    network:
+      - mode: host
     environment:
       - TZ=UTC
       - POSTGRES_DB=dispatcharr
@@ -198,9 +233,11 @@ services:
       - REDIS_HOST=
       - REDIS_PORT=
       - DISABLE_ML_DOWNLOADS=
+    volumes:
+      - "/path/to/containers/dispatcharr:/data"
 ```
 
-Save as `podman-compose.yml`, then run `bastille up`. Or via CLI:
+Save as `bastille-compose.yml`, then run `bastille up`. Or via CLI:
 
 ```bash
 bastille create -O \
@@ -214,7 +251,7 @@ bastille create -O \
   --env REDIS_HOST= \
   --env REDIS_PORT= \
   --env DISABLE_ML_DOWNLOADS= \
-  --data-path /path/to/containers/dispatcharr \
+  --volume /path/to/containers/dispatcharr /data \
   dispatcharr ghcr.io/daemonless/dispatcharr:latest inherit
 ```
 
