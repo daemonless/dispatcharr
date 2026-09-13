@@ -7,6 +7,7 @@ Source: dbuild templates
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/daemonless/dispatcharr/build.yaml?style=flat-square&label=Build&color=green)](https://github.com/daemonless/dispatcharr/actions)
 [![Last Commit](https://img.shields.io/github/last-commit/daemonless/dispatcharr?style=flat-square&label=Last+Commit&color=blue)](https://github.com/daemonless/dispatcharr/commits)
+[![OCI Pulls](https://img.shields.io/docker/pulls/daemonless/dispatcharr?style=flat-square&label=OCI+Pulls&color=blue)](https://hub.docker.com/r/daemonless/dispatcharr)
 [![sysvipc Required](https://img.shields.io/badge/sysvipc-required-orange?style=flat-square&logo=freebsd&logoColor=white)](https://daemonless.io/guides/ocijail-patch/)
 
 Dispatcharr — stream dispatching and channel management.

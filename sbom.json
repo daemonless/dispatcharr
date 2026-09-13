@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-11T23:51:17Z",
+  "generated": "2026-09-13T21:41:19Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.30.0",
+      "app_version": "v0.31.0",
       "arch": "amd64",
-      "generated": "2026-09-11T23:48:22Z",
+      "generated": "2026-09-13T21:36:16Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1247,7 +1247,7 @@
           {
             "name": "Django",
             "purl": "",
-            "version": "6.0.7"
+            "version": "6.0.8"
           },
           {
             "name": "Incremental",
@@ -1272,7 +1272,7 @@
           {
             "name": "RapidFuzz",
             "purl": "",
-            "version": "3.14.5"
+            "version": "3.14.6"
           },
           {
             "name": "Twisted",
@@ -1382,7 +1382,7 @@
           {
             "name": "dispatcharr",
             "purl": "",
-            "version": "0.30.0"
+            "version": "0.31.0"
           },
           {
             "name": "distlib",
@@ -1427,7 +1427,7 @@
           {
             "name": "djangorestframework",
             "purl": "",
-            "version": "3.17.1"
+            "version": "3.18.1"
           },
           {
             "name": "djangorestframework_simplejwt",
@@ -1447,7 +1447,7 @@
           {
             "name": "gevent",
             "purl": "",
-            "version": "26.7.0"
+            "version": "26.8.0"
           },
           {
             "name": "greenlet",
@@ -1492,7 +1492,7 @@
           {
             "name": "lxml",
             "purl": "",
-            "version": "6.1.1"
+            "version": "6.1.3"
           },
           {
             "name": "m3u8",
@@ -1657,7 +1657,7 @@
           {
             "name": "streamlink",
             "purl": "",
-            "version": "8.5.0"
+            "version": "8.6.0"
           },
           {
             "name": "tomli",
@@ -1697,7 +1697,7 @@
           {
             "name": "tzdata",
             "purl": "",
-            "version": "2026.3"
+            "version": "2026.4"
           },
           {
             "name": "tzlocal",
