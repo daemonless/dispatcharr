@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-13T21:41:19Z",
+  "generated": "2026-09-21T00:07:18Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.31.0",
       "arch": "amd64",
-      "generated": "2026-09-13T21:36:16Z",
+      "generated": "2026-09-21T00:04:33Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -63,6 +63,13 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-devmatch",
+            "version": "15.1"
+          },
+          {
+            "licenses": [
+              "BSD-3-Clause"
+            ],
+            "name": "FreeBSD-dhclient",
             "version": "15.1"
           },
           {
@@ -188,6 +195,13 @@
             "licenses": [
               "BSD2CLAUSE"
             ],
+            "name": "FreeBSD-resolvconf",
+            "version": "15.1"
+          },
+          {
+            "licenses": [
+              "BSD2CLAUSE"
+            ],
             "name": "FreeBSD-runtime",
             "version": "15.1p3"
           },
@@ -295,7 +309,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.127"
+            "version": "3.129"
           },
           {
             "licenses": [
@@ -1097,7 +1111,7 @@
               "LGPL21"
             ],
             "name": "srt",
-            "version": "1.5.5"
+            "version": "1.5.6"
           },
           {
             "licenses": [
@@ -1282,7 +1296,7 @@
           {
             "name": "amqp",
             "purl": "",
-            "version": "5.3.1"
+            "version": "5.4.0"
           },
           {
             "name": "asgiref",
@@ -1302,7 +1316,7 @@
           {
             "name": "billiard",
             "purl": "",
-            "version": "4.2.4"
+            "version": "4.3.0"
           },
           {
             "name": "cbor2",
@@ -1357,7 +1371,7 @@
           {
             "name": "click-repl",
             "purl": "",
-            "version": "0.3.0"
+            "version": "0.4.0"
           },
           {
             "name": "constantly",
@@ -1452,7 +1466,7 @@
           {
             "name": "greenlet",
             "purl": "",
-            "version": "3.5.5"
+            "version": "3.5.6"
           },
           {
             "name": "h11",
@@ -1547,7 +1561,7 @@
           {
             "name": "psycopg",
             "purl": "",
-            "version": "3.3.5"
+            "version": "3.3.6"
           },
           {
             "name": "pyOpenSSL",
@@ -1657,7 +1671,7 @@
           {
             "name": "streamlink",
             "purl": "",
-            "version": "8.6.0"
+            "version": "8.6.1"
           },
           {
             "name": "tomli",
@@ -1732,7 +1746,7 @@
           {
             "name": "wcwidth",
             "purl": "",
-            "version": "0.8.3"
+            "version": "0.8.4"
           },
           {
             "name": "websocket-client",
@@ -1766,7 +1780,7 @@
       "source": "upstream",
       "summary": {
         "dotnet": 0,
-        "freebsd": 161,
+        "freebsd": 163,
         "go": 0,
         "java": 0,
         "node": 11,
@@ -1774,7 +1788,7 @@
         "python": 105,
         "ruby": 0,
         "rust": 0,
-        "total": 277
+        "total": 279
       }
     }
   }
