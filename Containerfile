@@ -89,6 +89,8 @@ RUN sed -i '' \
 FROM ghcr.io/daemonless/base:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
+ARG UPSTREAM_URL
+ARG UPSTREAM_JQ
 ARG PACKAGES="python313 postgresql17-server postgresql17-client redis nginx ffmpeg doas libjpeg-turbo openjpeg libxml2 libxslt"
 
 LABEL org.opencontainers.image.title="Dispatcharr" \
