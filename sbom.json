@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-21T00:07:18Z",
+  "generated": "2026-09-27T20:59:25Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.31.0",
       "arch": "amd64",
-      "generated": "2026-09-21T00:04:33Z",
+      "generated": "2026-09-27T20:57:09Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1271,7 +1271,7 @@
           {
             "name": "PyJWT",
             "purl": "",
-            "version": "2.14.0"
+            "version": "2.15.0"
           },
           {
             "name": "PySocks",
@@ -1611,7 +1611,7 @@
           {
             "name": "pytz",
             "purl": "",
-            "version": "2026.3.post1"
+            "version": "2026.4"
           },
           {
             "name": "redis",
@@ -1746,7 +1746,7 @@
           {
             "name": "wcwidth",
             "purl": "",
-            "version": "0.8.4"
+            "version": "0.9.1"
           },
           {
             "name": "websocket-client",
