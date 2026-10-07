@@ -48,7 +48,7 @@ services:
       - REDIS_PORT=  # Redis port (default: 6379)
       - DISABLE_ML_DOWNLOADS=  # Set false to enable ML channel matching (requires torch — not available in this build)
     volumes:
-      - "/path/to/containers/dispatcharr:/data"
+      - "/containers/dispatcharr:/data"
     ports:
       - "9191:9191"
     annotations:
@@ -110,7 +110,7 @@ services:
       - dispatcharr: /data
 volumes:
   dispatcharr:
-    device: '/path/to/containers/dispatcharr'
+    device: '/containers/dispatcharr'
 ```
 
 **Makejail**:
@@ -145,72 +145,6 @@ Save the files above, then run `appjail-director up`.
 >
 > To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
 
-### Podman CLI
-
-```bash
-podman run -d --name dispatcharr \
-  -p 9191:9191 \
-  --annotation 'org.freebsd.jail.allow.sysvipc=true' \
-  -e TZ=UTC \
-  -e POSTGRES_DB=dispatcharr \
-  -e POSTGRES_USER=dispatcharr \
-  -e POSTGRES_PASSWORD=dispatcharr \
-  -e CELERY_NICE_LEVEL=5 \
-  -e DISPATCHARR_PORT= \
-  -e DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY> \
-  -e REDIS_HOST= \
-  -e REDIS_PORT= \
-  -e DISABLE_ML_DOWNLOADS= \
-  -v /path/to/containers/dispatcharr:/data \
-  ghcr.io/daemonless/dispatcharr:latest
-```
-
-Save as `run.sh`, then run `sh run.sh`.
-
-### AppJail
-
-
-```bash
-appjail oci run -Pd \
-  -o overwrite=force \
-  -o container="args:--pull" \
-  -o virtualnet=":<random> default" \
-  -o nat \
-  -o template=template.conf \
-  -o expose="9191:9191 proto:tcp" \
-  -e TZ=UTC \
-  -e POSTGRES_DB=dispatcharr \
-  -e POSTGRES_USER=dispatcharr \
-  -e POSTGRES_PASSWORD=dispatcharr \
-  -e CELERY_NICE_LEVEL=5 \
-  -e DISPATCHARR_PORT= \
-  -e DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY> \
-  -e REDIS_HOST= \
-  -e REDIS_PORT= \
-  -e DISABLE_ML_DOWNLOADS= \
-  -o fstab="/path/to/containers/dispatcharr /data <pseudofs>" \
-  ghcr.io/daemonless/dispatcharr:latest dispatcharr
-```
-
-**template.conf**:
-```
-# template.conf
-
-exec.start: "/bin/sh /etc/rc"
-exec.stop: "/bin/sh /etc/rc.shutdown jail"
-mount.devfs
-persist
-allow.sysvipc
-```
-
-Save the files above, then run `sh run.sh`.
-
-
-> [!WARNING]
-> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
->
-> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
-
 ### Bastille
 
 > [!WARNING]
@@ -235,56 +169,10 @@ services:
       - REDIS_PORT=
       - DISABLE_ML_DOWNLOADS=
     volumes:
-      - "/path/to/containers/dispatcharr:/data"
+      - "/containers/dispatcharr:/data"
 ```
 
-Save as `bastille-compose.yml`, then run `bastille up`. Or via CLI:
-
-```bash
-bastille create -O \
-  --env TZ=UTC \
-  --env POSTGRES_DB=dispatcharr \
-  --env POSTGRES_USER=dispatcharr \
-  --env POSTGRES_PASSWORD=dispatcharr \
-  --env CELERY_NICE_LEVEL=5 \
-  --env DISPATCHARR_PORT= \
-  --env DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY> \
-  --env REDIS_HOST= \
-  --env REDIS_PORT= \
-  --env DISABLE_ML_DOWNLOADS= \
-  --volume /path/to/containers/dispatcharr /data \
-  dispatcharr ghcr.io/daemonless/dispatcharr:latest inherit
-```
-
-### Ansible
-
-```yaml
-- name: Deploy dispatcharr
-  containers.podman.podman_container:
-    name: dispatcharr
-    image: "ghcr.io/daemonless/dispatcharr:latest"
-    state: started
-    restart_policy: always
-    env:
-      TZ: "UTC"
-      POSTGRES_DB: "dispatcharr"
-      POSTGRES_USER: "dispatcharr"
-      POSTGRES_PASSWORD: "dispatcharr"
-      CELERY_NICE_LEVEL: "5"
-      DISPATCHARR_PORT: ""
-      DJANGO_SECRET_KEY: "<DJANGO_SECRET_KEY>"
-      REDIS_HOST: ""
-      REDIS_PORT: ""
-      DISABLE_ML_DOWNLOADS: ""
-    ports:
-      - "9191:9191"
-    volumes:
-      - "/path/to/containers/dispatcharr:/data"
-    annotation:
-      org.freebsd.jail.allow.sysvipc: "true"
-```
-
-Save as `dispatcharr-deploy.yaml`, then run `ansible-playbook dispatcharr-deploy.yaml`.
+Save as `bastille-compose.yml`, then run `bastille up`.
 
 Access at: `http://localhost:9191`
 
