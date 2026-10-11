@@ -29,7 +29,9 @@ RUN node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("package.
     sed -i '' 's|@vitejs/plugin-react-swc|@vitejs/plugin-react|g' vite.config.js && \
     echo "Patched vite.config.js"
 
-RUN npm install --no-audit --progress=false && \
+# npm 12 refuses git dependencies by default (EALLOWGIT); a frontend
+# dependency pulls webworkify-webpack from GitHub, so allow it here.
+RUN npm install --no-audit --progress=false --allow-git=all && \
     npm run build && \
     rm -rf node_modules .cache
 
