@@ -3,7 +3,7 @@ ARG UPSTREAM_URL="https://api.github.com/repos/Dispatcharr/Dispatcharr/releases/
 ARG UPSTREAM_JQ=".tag_name"
 
 # ── Stage 1: Frontend ──────────────────────────────────────────────────────────
-FROM ghcr.io/daemonless/base:${BASE_VERSION} AS frontend-builder
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION} AS frontend-builder
 
 ARG NODE_VERSION=22
 
@@ -35,7 +35,7 @@ RUN npm install --no-audit --progress=false --allow-git=all && \
 # Comskip is optional — commercial detection. Skipped for initial build.
 
 # ── Stage 3: Python app ────────────────────────────────────────────────────────
-FROM ghcr.io/daemonless/base:${BASE_VERSION} AS app-builder
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION} AS app-builder
 
 RUN pkg update && \
     pkg install -y \
@@ -82,7 +82,7 @@ RUN sed -i '' \
     /dispatcharrpy/bin/pip cache purge
 
 # ── Stage 4: Production ───────────────────────────────────────────────────────
-FROM ghcr.io/daemonless/base:${BASE_VERSION}
+FROM ghcr.io/daemonless/base-rcd:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
 ARG UPSTREAM_URL
@@ -121,13 +121,9 @@ COPY --from=app-builder /dispatcharrpy /dispatcharrpy
 
 # Copy root filesystem (service scripts, nginx config)
 COPY root/ /
+RUN chmod +x /daemonless/libexec/* /daemonless/init.d/*
 
-RUN chmod +x \
-        /etc/services.d/postgres/run \
-        /etc/services.d/redis/run \
-        /etc/services.d/nginx/run \
-        /etc/services.d/uwsgi/run \
-        /healthz && \
+RUN chmod +x /healthz && \
     # /app and venv must be bsd-writable/executable at runtime
     chown -R bsd:bsd /app /dispatcharrpy
 

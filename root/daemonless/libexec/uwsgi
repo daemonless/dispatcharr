@@ -26,7 +26,7 @@ done
 echo "[uwsgi] PostgreSQL is ready."
 
 # Run Django setup (idempotent on every start)
-s6-setuidgid bsd /dispatcharrpy/bin/python /app/manage.py migrate --noinput
-s6-setuidgid bsd /dispatcharrpy/bin/python /app/manage.py collectstatic --noinput -v 0
+dsu bsd /dispatcharrpy/bin/python /app/manage.py migrate --noinput
+dsu bsd /dispatcharrpy/bin/python /app/manage.py collectstatic --noinput -v 0
 
-exec s6-setuidgid bsd /dispatcharrpy/bin/uwsgi --ini /app/docker/uwsgi.ini
+exec dsu bsd /dispatcharrpy/bin/uwsgi --ini /app/docker/uwsgi.ini
