@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-23T09:01:47Z",
+  "generated": "2026-10-23T16:59:05Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
       "app_version": "v0.32.0",
       "arch": "amd64",
-      "generated": "2026-10-23T08:58:57Z",
+      "generated": "2026-10-23T16:54:50Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -188,13 +188,6 @@
             "licenses": [
               "BSD2CLAUSE"
             ],
-            "name": "FreeBSD-rc",
-            "version": "15.1"
-          },
-          {
-            "licenses": [
-              "BSD2CLAUSE"
-            ],
             "name": "FreeBSD-resolvconf",
             "version": "15.1"
           },
@@ -333,13 +326,6 @@
             ],
             "name": "doas",
             "version": "6.4"
-          },
-          {
-            "licenses": [
-              "ISCL"
-            ],
-            "name": "execline",
-            "version": "2.9.8.1"
           },
           {
             "licenses": [
@@ -1087,13 +1073,6 @@
           },
           {
             "licenses": [
-              "ISCL"
-            ],
-            "name": "s6",
-            "version": "2.14.0.1"
-          },
-          {
-            "licenses": [
               "APACHE20"
             ],
             "name": "shaderc",
@@ -1105,13 +1084,6 @@
             ],
             "name": "shared-mime-info",
             "version": "2.4_2"
-          },
-          {
-            "licenses": [
-              "ISCL"
-            ],
-            "name": "skalibs",
-            "version": "2.14.5.1"
           },
           {
             "licenses": [
@@ -1787,7 +1759,7 @@
       "source": "upstream",
       "summary": {
         "dotnet": 0,
-        "freebsd": 164,
+        "freebsd": 160,
         "go": 0,
         "java": 0,
         "node": 11,
@@ -1795,7 +1767,7 @@
         "python": 105,
         "ruby": 0,
         "rust": 0,
-        "total": 280
+        "total": 276
       }
     }
   }
