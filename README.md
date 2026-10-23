@@ -42,11 +42,11 @@ services:
       - POSTGRES_USER=dispatcharr  # PostgreSQL username (default: dispatcharr)
       - POSTGRES_PASSWORD=dispatcharr  # PostgreSQL password (default: dispatcharr)
       - CELERY_NICE_LEVEL=5  # niceness for Celery workers (default: 5)
-      - DISPATCHARR_PORT=  # Web UI port (default: 9191)
-      - DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY>  # Django secret key — auto-generated if not set, persisted to /data/secret_key
-      - REDIS_HOST=  # Redis hostname (default: 127.0.0.1)
-      - REDIS_PORT=  # Redis port (default: 6379)
-      - DISABLE_ML_DOWNLOADS=  # Set false to enable ML channel matching (requires torch — not available in this build)
+      # - DISPATCHARR_PORT=  # Web UI port (default: 9191)
+      # - DJANGO_SECRET_KEY=  # Django secret key — auto-generated if not set, persisted to /data/secret_key
+      # - REDIS_HOST=  # Redis hostname (default: 127.0.0.1)
+      # - REDIS_PORT=  # Redis port (default: 6379)
+      # - DISABLE_ML_DOWNLOADS=  # Set false to enable ML channel matching (requires torch — not available in this build)
     volumes:
       - "/containers/dispatcharr:/data"
     ports:
@@ -71,11 +71,6 @@ POSTGRES_DB=dispatcharr
 POSTGRES_USER=dispatcharr
 POSTGRES_PASSWORD=dispatcharr
 CELERY_NICE_LEVEL=5
-DISPATCHARR_PORT=
-DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY>
-REDIS_HOST=
-REDIS_PORT=
-DISABLE_ML_DOWNLOADS=
 ```
 
 **appjail-director.yml**:
@@ -101,11 +96,6 @@ services:
         - POSTGRES_USER: !ENV '${POSTGRES_USER}'
         - POSTGRES_PASSWORD: !ENV '${POSTGRES_PASSWORD}'
         - CELERY_NICE_LEVEL: !ENV '${CELERY_NICE_LEVEL}'
-        - DISPATCHARR_PORT: !ENV '${DISPATCHARR_PORT}'
-        - DJANGO_SECRET_KEY: !ENV '${DJANGO_SECRET_KEY}'
-        - REDIS_HOST: !ENV '${REDIS_HOST}'
-        - REDIS_PORT: !ENV '${REDIS_PORT}'
-        - DISABLE_ML_DOWNLOADS: !ENV '${DISABLE_ML_DOWNLOADS}'
     volumes:
       - dispatcharr: /data
 volumes:
@@ -163,11 +153,6 @@ services:
       - POSTGRES_USER=dispatcharr
       - POSTGRES_PASSWORD=dispatcharr
       - CELERY_NICE_LEVEL=5
-      - DISPATCHARR_PORT=
-      - DJANGO_SECRET_KEY=<DJANGO_SECRET_KEY>
-      - REDIS_HOST=
-      - REDIS_PORT=
-      - DISABLE_ML_DOWNLOADS=
     volumes:
       - "/containers/dispatcharr:/data"
 ```
