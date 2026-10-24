@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-23T16:59:05Z",
+  "generated": "2026-10-24T09:05:29Z",
   "image": "dispatcharr",
   "tags": {
     "latest": {
-      "app_version": "v0.32.0",
+      "app_version": "v0.33.0",
       "arch": "amd64",
-      "generated": "2026-10-23T16:54:50Z",
+      "generated": "2026-10-24T09:01:19Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1240,7 +1240,7 @@
           {
             "name": "Django",
             "purl": "",
-            "version": "6.0.8"
+            "version": "6.0.9"
           },
           {
             "name": "Incremental",
@@ -1375,7 +1375,7 @@
           {
             "name": "dispatcharr",
             "purl": "",
-            "version": "0.32.0"
+            "version": "0.33.0"
           },
           {
             "name": "distlib",
@@ -1420,7 +1420,7 @@
           {
             "name": "djangorestframework",
             "purl": "",
-            "version": "3.18.1"
+            "version": "3.18.3"
           },
           {
             "name": "djangorestframework_simplejwt",
@@ -1440,7 +1440,7 @@
           {
             "name": "gevent",
             "purl": "",
-            "version": "26.8.0"
+            "version": "26.9.0"
           },
           {
             "name": "greenlet",
